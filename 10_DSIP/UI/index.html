@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Delhivery Shipment Intelligence Platform</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Lucide Icons -->
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style-v2.css">
+
+</head>
+
+<body>
+
+    <!--=================================================
+                        HEADER
+    ===================================================-->
+
+    <header class="header">
+
+        <div class="header-left">
+
+            <div class="logo">
+
+                <i data-lucide="package-check"></i>
+
+            </div>
+
+            <div>
+
+                <h1>
+
+                    DELHIVERY
+
+                </h1>
+
+                <p>
+
+                    Shipment Intelligence Platform
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="header-center">
+
+            <div class="dashboard-title">
+
+                <i data-lucide="layout-dashboard"></i>
+
+                <span>
+
+                    Operations Dashboard
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <div class="date-card">
+
+                <i data-lucide="calendar-days"></i>
+
+                <span id="currentDate">
+
+                    Loading...
+
+                </span>
+
+            </div>
+
+            <div class="time-card">
+
+                <i data-lucide="clock-3"></i>
+
+                <span id="currentTime">
+
+                    Loading...
+
+                </span>
+
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar">
+
+                    A
+
+                </div>
+
+                <div>
+
+                    <h4>
+
+                        Administrator
+
+                    </h4>
+
+                    <small>
+
+                        Operations Team
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!--==================================================
+                    MAIN CONTAINER
+    ===================================================-->
+
+    <main class="container">
+
+        <!--==============================================
+                    DASHBOARD HEADER
+        ===============================================-->
+
+        <section class="section-header">
+
+            <div>
+
+                <h2>
+
+                    Shipment Overview
+
+                </h2>
+
+                <p>
+
+                    Monitor real-time shipment statistics across the logistics network.
+
+                </p>
+
+            </div>
+
+            <div class="last-updated">
+
+                <i data-lucide="activity"></i>
+
+                <span>
+
+                    Last Updated :
+
+                </span>
+
+                <strong id="lastUpdated">
+
+                    Just Now
+
+                </strong>
+
+            </div>
+
+        </section>
+
+        <!--==============================================
+                        KPI CARDS
+        ===============================================-->
+
+        <section class="stats-grid">
+
+            <!-- Total -->
+
+            <article class="stat-card total">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+
+                        <i data-lucide="boxes"></i>
+
+                    </div>
+
+                    <span class="status-dot"></span>
+
+                </div>
+
+                <h5>
+
+                    Total Shipments
+
+                </h5>
+
+                <h2 id="totalCount">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Across Network
+
+                </p>
+
+            </article>
+
+            <!-- Booked -->
+
+            <article class="stat-card booked">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+
+                        <i data-lucide="clipboard-check"></i>
+
+                    </div>
+
+                    <span class="status-dot"></span>
+
+                </div>
+
+                <h5>
+
+                    Booked
+
+                </h5>
+
+                <h2 id="bookedCount">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Ready for Dispatch
+
+                </p>
+
+            </article>
+
+            <!-- Transit -->
+
+            <article class="stat-card transit">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+
+                        <i data-lucide="truck"></i>
+
+                    </div>
+
+                    <span class="status-dot"></span>
+
+                </div>
+
+                <h5>
+
+                    In Transit
+
+                </h5>
+
+                <h2 id="transitCount">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Moving Across Network
+
+                </p>
+
+            </article>
+
+            <!-- OFD -->
+
+            <article class="stat-card ofd">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+
+                        <i data-lucide="map-pinned"></i>
+
+                    </div>
+
+                    <span class="status-dot"></span>
+
+                </div>
+
+                <h5>
+
+                    Out For Delivery
+
+                </h5>
+
+                <h2 id="ofdCount">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Delivery In Progress
+
+                </p>
+
+            </article>
+
+            <!-- Delivered -->
+
+            <article class="stat-card delivered">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+
+                        <i data-lucide="circle-check-big"></i>
+
+                    </div>
+
+                    <span class="status-dot"></span>
+
+                </div>
+
+                <h5>
+
+                    Delivered
+
+                </h5>
+
+                <h2 id="deliveredCount">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Successfully Delivered
+
+                </p>
+
+            </article>
+
+            <!-- RTO -->
+
+            <article class="stat-card rto">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+
+                        <i data-lucide="rotate-ccw"></i>
+
+                    </div>
+
+                    <span class="status-dot"></span>
+
+                </div>
+
+                <h5>
+
+                    RTO
+
+                </h5>
+
+                <h2 id="rtoCount">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Returned To Origin
+
+                </p>
+
+            </article>
+
+        </section>
+
+        <!--==============================================
+                SHIPMENT OPERATIONS
+        ===============================================-->
+
+        <section class="section-header operations-title">
+
+            <div>
+
+                <h2>
+
+                    Shipment Operations
+
+                </h2>
+
+                <p>
+
+                    Book, Track and Manage shipments from one centralized workspace.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <!--==============================================
+                    OPERATIONS GRID START
+        ===============================================-->
+
+        <section class="operations-grid">
+            <!--==============================================
+                    BOOK SHIPMENT
+            ===============================================-->
+
+            <section class="booking-card card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        <div class="title-icon blue">
+
+                            <i data-lucide="package-plus"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>Book New Shipment</h3>
+
+                            <p>Create a new shipment request</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <form id="bookingForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="awbNumber">
+
+                                AWB Number
+
+                            </label>
+
+                            <input type="text"
+                                   id="awbNumber"
+                                   placeholder="DEL2025010"
+                                   autocomplete="off">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="weightKg">
+
+                                Weight (Kg)
+
+                            </label>
+
+                            <input type="number"
+                                   id="weightKg"
+                                   step="0.01"
+                                   min="0"
+                                   placeholder="2.50">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="senderName">
+
+                                Sender Name
+
+                            </label>
+
+                            <input type="text"
+                                   id="senderName"
+                                   placeholder="Enter sender name">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="receiverName">
+
+                                Receiver Name
+
+                            </label>
+
+                            <input type="text"
+                                   id="receiverName"
+                                   placeholder="Enter receiver name">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="origin">
+
+                                Origin
+
+                            </label>
+
+                            <input type="text"
+                                   id="origin"
+                                   placeholder="Hyderabad">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="destination">
+
+                                Destination
+
+                            </label>
+
+                            <input type="text"
+                                   id="destination"
+                                   placeholder="Bangalore">
+
+                        </div>
+
+                    </div>
+
+                    <button id="bookShipmentBtn"
+                            type="submit"
+                            class="primary-btn">
+
+                        <i data-lucide="plus"></i>
+
+                        Book Shipment
+
+                    </button>
+
+                </form>
+
+            </section>
+
+            <!--==============================================
+                    TRACK SHIPMENT
+            ===============================================-->
+
+            <section class="tracking-card card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        <div class="title-icon orange">
+
+                            <i data-lucide="search"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>Track Shipment</h3>
+
+                            <p>Search using AWB Number</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="tracking-body">
+
+                    <input type="text"
+                           id="trackAwb"
+                           placeholder="Enter AWB Number">
+
+                    <button id="trackBtn"
+                            class="secondary-btn">
+
+                        <i data-lucide="search"></i>
+
+                        Track
+
+                    </button>
+
+                </div>
+
+                <div class="tracking-tip">
+
+                    <i data-lucide="info"></i>
+
+                    <span>
+
+                        Example: DEL2025001
+
+                    </span>
+
+                </div>
+
+            </section>
+
+            <!--==============================================
+                    SHIPMENT DETAILS
+            ===============================================-->
+
+            <section class="details-card card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        <div class="title-icon green">
+
+                            <i data-lucide="package-search"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>Shipment Details</h3>
+
+                            <p>Real-time shipment information</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="trackingResult"
+                     class="shipment-details">
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+
+                            <i data-lucide="package-search"></i>
+
+                        </div>
+
+                        <h4>
+
+                            No Shipment Selected
+
+                        </h4>
+
+                        <p>
+
+                            Search a shipment using its AWB Number
+                            to view complete shipment information.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+        <!--==============================================
+                SHIPMENT DASHBOARD
+        ===============================================-->
+
+        <section class="shipment-dashboard">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+
+                        Shipment Dashboard
+
+                    </h2>
+
+                    <p>
+
+                        View, update and manage all shipments across the network.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!--==========================================
+                        TOOLBAR
+            ===========================================-->
+
+            <div class="dashboard-toolbar">
+
+                <div class="toolbar-left">
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Status
+
+                        </label>
+
+                        <select id="statusFilter">
+
+                            <option value="All">
+
+                                All Shipments
+
+                            </option>
+
+                            <option value="Booked">
+
+                                Booked
+
+                            </option>
+
+                            <option value="In Transit">
+
+                                In Transit
+
+                            </option>
+
+                            <option value="Out for Delivery">
+
+                                Out For Delivery
+
+                            </option>
+
+                            <option value="Delivered">
+
+                                Delivered
+
+                            </option>
+
+                            <option value="RTO">
+
+                                RTO
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="toolbar-right">
+
+                    <div class="search-box">
+
+                        <i data-lucide="search"></i>
+
+                        <input type="text"
+                               id="tableSearch"
+                               placeholder="Search by AWB, Sender or Receiver">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--==========================================
+                        TABLE CARD
+            ===========================================-->
+
+            <div class="table-card">
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h3>
+
+                            Shipment Records
+
+                        </h3>
+
+                        <small>
+
+                            Live shipment information
+
+                        </small>
+
+                    </div>
+
+                    <div class="table-count">
+
+                        <span id="tableRecordCount">
+
+                            0
+
+                        </span>
+
+                        Records
+
+                    </div>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table class="shipment-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>AWB</th>
+
+                                <th>Sender</th>
+
+                                <th>Receiver</th>
+
+                                <th>Route</th>
+
+                                <th>Weight</th>
+
+                                <th>Status</th>
+
+                                <th>Booked</th>
+
+                                <th>Update Status</th>
+
+                                <th>Delete</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="shipmentTableBody">
+
+                            <!-- Dynamic rows from JavaScript -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!--======================================
+                        EMPTY TABLE
+                =======================================-->
+
+                <div id="emptyTableState"
+                     class="table-empty">
+
+                    <div class="empty-icon">
+
+                        <i data-lucide="package-open"></i>
+
+                    </div>
+
+                    <h3>
+
+                        No Shipments Available
+
+                    </h3>
+
+                    <p>
+
+                        Book a shipment to see records appear here.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!--==============================================
+                DASHBOARD FOOTER
+        ===============================================-->
+
+        <section class="dashboard-footer">
+
+            <div class="footer-left">
+
+                <i data-lucide="database"></i>
+
+                <span>
+
+                    Showing
+
+                </span>
+
+                <strong id="footerShipmentCount">
+
+                    0
+
+                </strong>
+
+                <span>
+
+                    Shipments
+
+                </span>
+
+            </div>
+
+            <div class="footer-center">
+
+                <i data-lucide="history"></i>
+
+                <span>
+
+                    Last Refreshed :
+
+                </span>
+
+                <strong id="footerLastUpdated">
+
+                    Just Now
+
+                </strong>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!--==============================================
+            SUCCESS / ERROR NOTIFICATION
+    ===============================================-->
+
+    <div id="toastContainer">
+
+        <div id="toast"
+             class="toast">
+
+            <div class="toast-icon">
+
+                <i data-lucide="circle-check-big"></i>
+
+            </div>
+
+            <div class="toast-content">
+
+                <h4 id="toastTitle">
+
+                    Success
+
+                </h4>
+
+                <p id="toastMessage">
+
+                    Shipment updated successfully.
+
+                </p>
+
+            </div>
+
+            <button id="toastClose"
+                    class="toast-close">
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!--==============================================
+                LOADING OVERLAY
+    ===============================================-->
+
+    <div id="loadingOverlay"
+         class="loading-overlay">
+
+        <div class="loader-card">
+
+            <div class="loader-spinner">
+
+            </div>
+
+            <h3>
+
+                Loading Dashboard
+
+            </h3>
+
+            <p>
+
+                Please wait while we fetch shipment information...
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!--==============================================
+                    PAGE FOOTER
+    ===============================================-->
+
+    <footer class="footer">
+
+        <div>
+
+            <strong>
+
+                Delhivery Shipment Intelligence Platform
+
+            </strong>
+
+            <p>
+
+                Enterprise Logistics Dashboard
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <span>
+
+                Developed using ASP.NET Core Web API • ADO.NET • SQL Server • HTML • CSS • JavaScript
+
+            </span>
+
+        </div>
+
+    </footer>
+
+    <!--==============================================
+                    JAVASCRIPT
+    ===============================================-->
+
+    <script src="app.js"></script>
+
+    <script>
+
+        lucide.createIcons();
+
+    </script>
+
+</body>
+
+</html>
