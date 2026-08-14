@@ -1,0 +1,116 @@
+create Database FlightDB
+use FlightDB
+
+
+--Creating a table of Flights
+CREATE TABLE Flights(
+FlightId INT PRIMARY KEY IDENTITY(1001,1),
+FlightNumber VARCHAR(100),
+SourceCity VARCHAR(100),
+DestinationCity VARCHAR(100),
+Price DECIMAL(18,2),
+DepartureTime DATETIME,
+AvailableSeats INT
+)
+
+--Creating a stored procedure of Get All Flights
+CREATE PROCEDURE sp_GetAllFlights
+AS
+BEGIN
+	SELECT * FROM Flights
+END
+
+
+--Creating a stored procedure of Get By Id
+CREATE PROCEDURE sp_GetFlightById(
+@FlightId INT
+)
+AS
+BEGIN 
+	SELECT * 
+	FROM Flights
+	WHERE FlightId=@FlightId
+END
+
+--Creating a stored procedure of Insert New Flight
+CREATE PROCEDURE sp_InsertNewFlight(
+@FlightNumber VARCHAR(100),
+@SourceCity VARCHAR(100),
+@DestinationCity VARCHAR(100),
+@Price DECIMAL(18,2),
+@DepartureTime DATETIME,
+@AvailableSeats INT
+)
+AS
+BEGIN
+	INSERT INTO Flights(FlightNumber,SourceCity,DestinationCity,Price,DepartureTime,AvailableSeats)
+	VALUES(@FlightNumber,@SourceCity,@DestinationCity,@price,@DepartureTime,@AvailableSeats)
+END
+
+
+
+--Creating a stored procedure of Update Existing Flight
+CREATE PROCEDURE sp_UpdateExistingFlight(
+@FlightId INT,
+@FlightNumber VARCHAR(100),
+@SourceCity Varchar(100),
+@DestinationCity varchar(100),
+@Price decimal(18,2),
+@DepartureTime Datetime,
+@AvailableSeats int
+)
+AS
+BEGIN
+	UPDATE Flights
+	set
+		FlightNumber=@FlightNumber,
+		SourceCity=@SourceCity,
+		DestinationCity=@DestinationCity,
+		Price=@Price,
+		DepartureTime=@DepartureTime,
+		AvailableSeats=@AvailableSeats
+		WHERE FlightId=@FlightId;
+END
+
+
+--Creating a stored procedure of Delete Fligt
+Create procedure sp_DeleteFlight(
+@FlightId int
+)
+AS
+BEGIN
+	DELETE 
+	FROM Flights
+	WHERE FlightId=@FlightId
+END
+
+--Inserting 10 sample values into Flights table
+
+INSERT INTO Flights (FlightNumber, SourceCity, DestinationCity, Price, DepartureTime, AvailableSeats)
+VALUES
+('AI101', 'Hyderabad', 'Delhi', 5500.00, '2026-05-20 08:30:00', 120),
+
+('6E202', 'Chennai', 'Mumbai', 6200.50, '2026-05-21 10:15:00', 95),
+
+('SG303', 'Bangalore', 'Kolkata', 7100.75, '2026-05-22 14:45:00', 80),
+
+('UK404', 'Delhi', 'Pune', 4800.00, '2026-05-23 06:20:00', 150),
+
+('AI505', 'Mumbai', 'Hyderabad', 5300.25, '2026-05-24 19:10:00', 110),
+
+('6E606', 'Kolkata', 'Chennai', 6700.00, '2026-05-25 12:00:00', 100),
+
+('SG707', 'Pune', 'Bangalore', 4500.50, '2026-05-26 16:40:00', 130),
+
+('UK808', 'Delhi', 'Hyderabad', 5900.00, '2026-05-27 09:25:00', 90),
+
+('AI909', 'Chennai', 'Goa', 7500.00, '2026-05-28 18:15:00', 70),
+
+('6E010', 'Goa', 'Mumbai', 4100.75, '2026-05-29 07:50:00', 140);
+
+
+
+
+exec sp_DeleteFlight  1010 ;
+
+select * from Flights;
