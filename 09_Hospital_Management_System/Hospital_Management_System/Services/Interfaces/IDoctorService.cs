@@ -1,0 +1,16 @@
+﻿namespace Hospital_Management_System.Services.Interfaces
+{
+    using Hospital_Management_System.Models;
+
+    public interface IDoctorService
+    {
+
+        void AddDoctor(Doctor doctor);
+
+        void UpdateDoctorDetails(Doctor doctor);
+
+        void UpdateDoctorAvailability(int id, bool available);
+
+        List<Doctor> GetDoctors(string? specialization, bool? available);
+    }
+}
