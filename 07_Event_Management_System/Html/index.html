@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | EduFest</title>
+    <link rel="icon" type="image/svg+xml" href="./images/edufest_icon.svg">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="nav-logo">
+            Edu<span>Fest</span><span class="dot">.</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:20px;">
+
+                <a href="index.html" class="nav-cta nav-active">
+                    Home
+                </a>
+
+                <a href="./register.html" class="nav-cta">
+                    Register
+                </a>
+
+                <a href="./dashboard.html" class="nav-cta">
+                    Dashboard
+                </a>
+
+                <a href="./contact.html" class="nav-cta">
+                    Contact
+                </a>
+
+                <button id="themeToggle" class="nav-cta nav-theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+        
+    </header>
+
+  <section id="hero">
+
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+
+        <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+            <div class="hero-badge-dot"></div>
+            LIVE EVENT REGISTRATIONS OPEN
+            </div>
+
+            <h1 class="hero-title">
+            SMART EVENT
+            <span class="line2">MANAGEMENT</span>
+            <span class="line3">PORTAL</span>
+            </h1>
+
+            <p class="hero-desc">
+            Explore workshops, hackathons, coding contests,
+            seminars, and tech festivals happening across campus.
+            Register instantly and never miss an event.
+            </p>
+
+            <div class="hero-actions">
+            <a href="#events" class="btn-primary">
+                Explore Events
+            </a>
+
+            <a href="register.html" class="btn-secondary">
+                Register Now
+            </a>
+            </div>
+
+            <div class="hero-stats">
+
+            <div class="stat-item">
+                <span class="stat-num">120<span>+</span></span>
+                <span class="stat-label">Events</span>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-num">5K<span>+</span></span>
+                <span class="stat-label">Students</span>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-num">35<span>+</span></span>
+                <span class="stat-label">Colleges</span>
+            </div>
+
+            </div>
+
+        </div>
+
+    
+        </div>
+
+        
+  </section>
+
+  <section class="events-section" aria-label="Featured college events">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="ec-header">
+        <div>
+          <div class="ec-tag">On Campus</div>
+          <div class="ec-title">FEATURED <span>EVENTS</span></div>
+        </div>
+      </div>
+
+      <!-- Window -->
+      <div class="ec-window" id="ecWindow">
+
+        <!-- Slides Track -->
+        <div class="ec-slides" id="ecTrack">
+
+          <!-- Slide 1: Music -->
+          <div class="ec-slide ec-slide--music" role="group" aria-label="Spring Jam Fest">
+            <div class="ec-slide-bg"></div>
+            <div class="ec-slide-grid"></div>
+            <div class="ec-slide-overlay"></div>
+            <i class="ti ti-music ec-deco-icon" aria-hidden="true"></i>
+            <div class="ec-slide-content">
+              <div class="ec-slide-cat">Music</div>
+              <div class="ec-slide-title">SPRING<br>JAM FEST</div>
+              <div class="ec-slide-meta">
+                <span><i class="ti ti-map-pin" aria-hidden="true"></i> Main Amphitheater</span>
+                <span><i class="ti ti-clock" aria-hidden="true"></i> 7:00 PM · 3 hrs</span>
+              </div>
+              <div class="ec-slide-desc">Live student bands, food stalls, and glow-in-the-dark art installations to close out the semester in style.</div>
+              <div class="ec-slide-footer">
+                <button class="ec-rsvp" onclick="toggleRsvp(this, 340)"><a href="./register.html">Register</a></button>
+                <div class="ec-attendees"><i class="ti ti-users" aria-hidden="true"></i> <span class="ec-count-num">340</span> going</div>
+              </div>
+            </div>
+            <div class="ec-date-block">
+              <div class="ec-date-day">22</div>
+              <div class="ec-date-mon">May</div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Tech -->
+          <div class="ec-slide ec-slide--tech" role="group" aria-label="Hackathon 2025">
+            <div class="ec-slide-bg"></div>
+            <div class="ec-slide-grid"></div>
+            <div class="ec-slide-overlay"></div>
+            <i class="ti ti-cpu ec-deco-icon" aria-hidden="true"></i>
+            <div class="ec-slide-content">
+              <div class="ec-slide-cat">Tech</div>
+              <div class="ec-slide-title">HACKATHON<br>2026</div>
+              <div class="ec-slide-meta">
+                <span><i class="ti ti-map-pin" aria-hidden="true"></i> Engineering Hall</span>
+                <span><i class="ti ti-clock" aria-hidden="true"></i> 10:00 AM · 24 hrs</span>
+              </div>
+              <div class="ec-slide-desc">Build, prototype, and pitch in 24 hours. ₹50,000 in prizes across 5 tracks — AI, sustainability, fintech, health &amp; education.</div>
+              <div class="ec-slide-footer">
+                <button class="ec-rsvp" onclick="toggleRsvp(this, 210)"><a href="./register.html">Register</a></button>
+                <div class="ec-attendees"><i class="ti ti-users" aria-hidden="true"></i> <span class="ec-count-num">210</span> going</div>
+              </div>
+            </div>
+            <div class="ec-date-block">
+              <div class="ec-date-day">24</div>
+              <div class="ec-date-mon">May</div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Culture -->
+          <div class="ec-slide ec-slide--culture" role="group" aria-label="Cultural Night">
+            <div class="ec-slide-bg"></div>
+            <div class="ec-slide-grid"></div>
+            <div class="ec-slide-overlay"></div>
+            <i class="ti ti-masks-theater ec-deco-icon" aria-hidden="true"></i>
+            <div class="ec-slide-content">
+              <div class="ec-slide-cat">Culture</div>
+              <div class="ec-slide-title">CULTURAL<br>NIGHT</div>
+              <div class="ec-slide-meta">
+                <span><i class="ti ti-map-pin" aria-hidden="true"></i> Open Air Theatre</span>
+                <span><i class="ti ti-clock" aria-hidden="true"></i> 5:00 PM · 4 hrs</span>
+              </div>
+              <div class="ec-slide-desc">Dance, drama, spoken word and cuisine from 18 student clubs celebrating campus diversity. Wear your colours.</div>
+              <div class="ec-slide-footer">
+                <button class="ec-rsvp" onclick="toggleRsvp(this, 520)"><a href="./register.html">Register</a></button>
+                <div class="ec-attendees"><i class="ti ti-users" aria-hidden="true"></i> <span class="ec-count-num">520</span> going</div>
+              </div>
+            </div>
+            <div class="ec-date-block">
+              <div class="ec-date-day">27</div>
+              <div class="ec-date-mon">May</div>
+            </div>
+          </div>
+
+          <!-- Slide 4: Sports -->
+          <div class="ec-slide ec-slide--sports" role="group" aria-label="Inter-Dept Tournament">
+            <div class="ec-slide-bg"></div>
+            <div class="ec-slide-grid"></div>
+            <div class="ec-slide-overlay"></div>
+            <i class="ti ti-trophy ec-deco-icon" aria-hidden="true"></i>
+            <div class="ec-slide-content">
+              <div class="ec-slide-cat">Sports</div>
+              <div class="ec-slide-title">INTER-DEPT<br>TOURNAMENT</div>
+              <div class="ec-slide-meta">
+                <span><i class="ti ti-map-pin" aria-hidden="true"></i> Sports Complex</span>
+                <span><i class="ti ti-clock" aria-hidden="true"></i> 8:00 AM · Full Day</span>
+              </div>
+              <div class="ec-slide-desc">Cricket, football, badminton &amp; chess — 14 departments battle for the championship shield. Cheer your team on.</div>
+              <div class="ec-slide-footer">
+                <button class="ec-rsvp" onclick="toggleRsvp(this, 680)"><a href="./register.html">Register</a></button>
+                <div class="ec-attendees"><i class="ti ti-users" aria-hidden="true"></i> <span class="ec-count-num">680</span> going</div>
+              </div>
+            </div>
+            <div class="ec-date-block">
+              <div class="ec-date-day">29</div>
+              <div class="ec-date-mon">May</div>
+            </div>
+          </div>
+
+          <!-- Slide 5: Workshop -->
+          <div class="ec-slide ec-slide--workshop" role="group" aria-label="Career Summit">
+            <div class="ec-slide-bg"></div>
+            <div class="ec-slide-grid"></div>
+            <div class="ec-slide-overlay"></div>
+            <i class="ti ti-briefcase ec-deco-icon" aria-hidden="true"></i>
+            <div class="ec-slide-content">
+              <div class="ec-slide-cat">Workshop</div>
+              <div class="ec-slide-title">CAREER<br>SUMMIT</div>
+              <div class="ec-slide-meta">
+                <span><i class="ti ti-map-pin" aria-hidden="true"></i> Seminar Hall A</span>
+                <span><i class="ti ti-clock" aria-hidden="true"></i> 2:00 PM · 2 hrs</span>
+              </div>
+              <div class="ec-slide-desc">Fireside chats, resume reviews and mock interviews with recruiters from 20+ companies. Register for a slot.</div>
+              <div class="ec-slide-footer">
+                <button class="ec-rsvp" onclick="toggleRsvp(this, 175)"><a href="./register.html">Register</a></button>
+                <div class="ec-attendees"><i class="ti ti-users" aria-hidden="true"></i> <span class="ec-count-num">175</span> going</div>
+              </div>
+            </div>
+            <div class="ec-date-block">
+              <div class="ec-date-day">01</div>
+              <div class="ec-date-mon">Jun</div>
+            </div>
+          </div>
+
+        </div><!-- /ec-slides -->
+
+        <!-- Nav Arrows -->
+        <button class="ec-nav-btn ec-nav-btn--prev" id="ecPrev" aria-label="Previous event">
+          <i class="ti ti-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button class="ec-nav-btn ec-nav-btn--next" id="ecNext" aria-label="Next event">
+          <i class="ti ti-arrow-right" aria-hidden="true"></i>
+        </button>
+
+        <!-- Slide Counter -->
+        <div class="ec-count" aria-live="polite">
+          <strong id="ecCurrent">1</strong> / 5
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="ec-progress">
+          <div class="ec-progress-bar" id="ecProgressBar"></div>
+        </div>
+
+      </div><!-- /ec-window -->
+
+      <!-- Dots -->
+      <div class="ec-dots-row" id="ecDots" role="tablist" aria-label="Go to slide"></div>
+
+    </div>
+    </section>
+
+  <section id="events">
+
+    <div class="container">
+
+      <div class="events-header">
+
+        <div class="events-header-left">
+
+          <h2 class="section-title">
+            EXPLORE <span>EVENTS</span>
+          </h2>
+
+          <div class="events-count">
+            Showing <span>6</span> live events
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- SEARCH BAR -->
+      <div class="search-filter-bar">
+
+        <div class="search-wrap">
+
+          <svg xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="1.5"
+               stroke="currentColor">
+
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 5.5 5.5a7.5 7.5 0 0 0 11.15 11.15Z" />
+
+          </svg>
+
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search events..."
+          />
+
+        </div>
+
+        <div class="filter-group">
+
+          <span class="filter-label">
+            Categories
+          </span>
+
+          <button class="filter-btn active">
+            All
+          </button>
+
+          <button class="filter-btn">
+            Coding
+          </button>
+
+          <button class="filter-btn">
+            Workshop
+          </button>
+
+          <button class="filter-btn">
+            Seminar
+          </button>
+
+        </div>
+
+        <select id="sortSelect">
+          <option>Sort By Date</option>
+          <option>Newest</option>
+          <option>Oldest</option>
+        </select>
+
+      </div>
+
+      <!-- EVENT GRID -->
+      <div id="eventGrid">
+
+        <!-- CARD 1 -->
+        <div class="event-card" data-date="2026-05-25" data-title="Hackathon 2026"  data-category="Coding">
+
+          <div class="event-thumb">
+
+            <div class="event-thumb-bg"
+                 style="background:linear-gradient(135deg,#f5a623,#e8384f)">
+            </div>
+
+            <div class="event-cat-badge">
+              Coding
+            </div>
+
+            <div class="event-seats-badge">
+              120 Seats
+            </div>
+
+            <div class="event-thumb-emoji">
+              <img src="./images/card1.jpg" alt="">
+            </div>
+
+          </div>
+
+          <div class="event-body">
+
+            <h3 class="event-title">
+              Hackathon 2026
+            </h3>
+
+            <p class="event-desc">
+              Build innovative solutions and compete with top developers.
+            </p>
+
+            <div class="event-meta">
+
+              <div class="event-meta-item" >
+                <i class="fa-solid fa-calendar"></i>
+                25 May 2026
+              </div>
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-location-dot"></i>
+                Main Auditorium
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="event-footer">
+
+            <div class="event-price free">
+              FREE
+            </div>
+            <div class="event-timer">
+                <i class="fa-regular fa-clock"></i>
+                <span class="timer-text"></span>
+                <!-- <div class="timer-text"></div> -->
+        </div>
+
+            <button class="btn-register">
+              <a href="./register.html">Register</a>
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="event-card" data-date="2026-06-12"
+        data-title="AI Workshop"
+        data-category="Workshop">
+
+          <div class="event-thumb">
+
+            <div class="event-thumb-bg"
+                 style="background:linear-gradient(135deg,#2ee8b8,#4080ff)">
+            </div>
+
+            <div class="event-cat-badge">
+              Workshop
+            </div>
+
+            <div class="event-seats-badge">
+              80 Seats
+            </div>
+
+            <div class="event-thumb-emoji">
+              <img src="./images/card2.jpg" alt="">
+            </div>
+
+          </div>
+
+          <div class="event-body">
+
+            <h3 class="event-title">
+              AI Workshop
+            </h3>
+
+            <p class="event-desc">
+              Learn Machine Learning and AI tools with live demos and hands on.
+            </p>
+
+            <div class="event-meta">
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-calendar"></i>
+                12 June 2026
+              </div>
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-location-dot"></i>
+                Lab Block
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="event-footer">
+
+            <div class="event-price">
+              ₹499
+            </div>
+              <div class="event-timer">
+                <i class="fa-regular fa-clock"></i>
+                <span class="timer-text"></span>
+            </div>
+
+            <button class="btn-register">
+              <a href="./register.html">Register</a>
+            </button>
+
+          </div>
+
+        </div>
+
+        <!--CARD 3-->
+        <div class="event-card" data-date="2026-06-28"
+         data-title="UI/UX Bootcamp"
+        data-category="Workshop">
+
+          <div class="event-thumb">
+
+            <div class="event-thumb-bg"
+                 style="background:linear-gradient(135deg,#f5a623,#e8384f)">
+            </div>
+
+            <div class="event-cat-badge">
+              Workshop
+            </div>
+
+            <div class="event-seats-badge">
+              60 Seats
+            </div>
+
+            <div class="event-thumb-emoji">
+              <img src="./images/card3.jpg" alt="">
+            </div>
+
+          </div>
+
+          <div class="event-body">
+
+            <h3 class="event-title">
+                UI/UX Bootcamp
+            </h3>
+
+            <p class="event-desc">
+              Master modern UI/UX design principles and prototyping.
+            </p>
+
+            <div class="event-meta">
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-calendar"></i>
+                28 June 2026
+              </div>
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-location-dot"></i>
+                Design Studio
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="event-footer">
+
+            <div class="event-price ">
+              ₹299
+            </div>
+            <div class="event-timer">
+                <i class="fa-regular fa-clock"></i>
+                <span class="timer-text"></span>
+            </div>
+
+            <button class="btn-register">
+              <a href="./register.html">Register</a>
+            </button>
+
+          </div>
+
+        </div>
+
+        <!--CARD 4-->
+        <div class="event-card" data-date="2026-07-02"
+        data-title="Startup Summit"
+        data-category="Seminar">
+
+          <div class="event-thumb">
+
+            <div class="event-thumb-bg"
+                 style="background:linear-gradient(135deg,#f5a623,#e8384f)">
+            </div>
+
+            <div class="event-cat-badge">
+              Seminar
+            </div>
+
+            <div class="event-seats-badge">
+              150 Seats
+            </div>
+
+            <div class="event-thumb-emoji">
+              <img src="./images/card4.jpg" alt="">
+            </div>
+
+          </div>
+
+          <div class="event-body">
+
+            <h3 class="event-title">
+              Startup Summit
+            </h3>
+
+            <p class="event-desc">
+              Connect with entrepreneurs and learn startup strategies.
+            </p>
+
+            <div class="event-meta">
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-calendar"></i>
+                02 July 2026
+              </div>
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-location-dot"></i>
+                Conference Hall
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="event-footer">
+
+            <div class="event-price free">
+              FREE
+            </div>
+            <div class="event-timer">
+                <i class="fa-regular fa-clock"></i>
+                <span class="timer-text"></span>
+            </div>
+
+            <button class="btn-register">
+              <a href="./register.html">Register</a>
+            </button>
+
+          </div>
+
+        </div>
+
+        <!--CARD 5-->
+        <div class="event-card" 
+        data-date="2026-07-15"
+        data-title="Cyber Security Conference"
+        data-category="Seminar">
+
+          <div class="event-thumb">
+
+            <div class="event-thumb-bg"
+                 style="background:linear-gradient(135deg,#f5a623,#e8384f)">
+            </div>
+
+            <div class="event-cat-badge">
+              Seminar
+            </div>
+
+            <div class="event-seats-badge">
+              90 Seats
+            </div>
+
+            <div class="event-thumb-emoji">
+              <img src="./images/card5.jpg" alt="">
+            </div>
+
+          </div>
+
+          <div class="event-body">
+
+            <h3 class="event-title">
+              Cyber Security Conference
+            </h3>
+
+            <p class="event-desc">
+              Explore ethical hacking, cyber defense, and security trends.
+            </p>
+
+            <div class="event-meta">
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-calendar"></i>
+                15 July 2026
+              </div>
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-location-dot"></i>
+                Tech Park Auditorium
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="event-footer">
+
+            <div class="event-price ">
+              ₹699
+            </div>
+            <div class="event-timer">
+                <i class="fa-regular fa-clock"></i>
+                <span class="timer-text"></span>
+            </div>
+
+            <button class="btn-register">
+              <a href="./register.html">Register</a>
+            </button>
+
+          </div>
+
+        </div>
+
+        <!--CARD 6-->
+        <div class="event-card" 
+        data-date="2026-08-05" 
+        data-title="Cloud Computing Expo"
+        data-category="Workshop">
+
+          <div class="event-thumb">
+
+            <div class="event-thumb-bg"
+                 style="background:linear-gradient(135deg,#f5a623,#e8384f)">
+            </div>
+
+            <div class="event-cat-badge">
+              Workshop
+            </div>
+
+            <div class="event-seats-badge">
+              100 Seats
+            </div>
+
+            <div class="event-thumb-emoji">
+              <img src="./images/card6.jpg" alt="">
+            </div>
+
+          </div>
+
+          <div class="event-body">
+
+            <h3 class="event-title">
+              Cloud Computing Expo
+            </h3>
+
+            <p class="event-desc">
+              Hands-on sessions on cloud platforms and DevOps practices.
+            </p>
+
+            <div class="event-meta">
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-calendar"></i>
+                05 August 2026
+              </div>
+
+              <div class="event-meta-item">
+                <i class="fa-solid fa-location-dot"></i>
+                Innovation Center
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="event-footer">
+
+            <div class="event-price ">
+              ₹399
+            </div>
+            <div class="event-timer">
+                <i class="fa-regular fa-clock"></i>
+                <span class="timer-text"></span>
+            </div>
+
+            <button class="btn-register">
+              <a href="./register.html">Register</a>
+            </button>
+
+          </div>
+
+        </div>
+        
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="about-inner">
+
+        <div class="about-visual">
+
+          <div class="about-img-box">
+            <img src="./images/nighttime-coding-session-stockcake.jpg" alt="" class="about-img">
+          </div>
+
+          <div class="about-accent-card">
+            <small>EST 2026</small>
+            Building Smart Campus Experiences
+          </div>
+
+        </div>
+
+        <div class="about-text">
+
+          <div class="tag">About EduFest</div>
+
+          <h2 class="section-title">
+            MANAGE EVENTS <span>SMARTLY</span>
+          </h2>
+
+          <p>
+            EduFest helps students discover, register,
+            and participate in technical and non-technical
+            events across colleges. The portal simplifies
+            event management with modern UI and real-time
+            event tracking.
+          </p>
+
+          <div class="about-features">
+
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                🚀
+              </div>
+
+              <div>
+                <div class="about-feature-text">
+                  Instant Registration
+                </div>
+
+                <div class="about-feature-sub">
+                  Register for events quickly
+                </div>
+              </div>
+            </div>
+
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                🔍
+              </div>
+
+              <div>
+                <div class="about-feature-text">
+                  Smart Search & Filters
+                </div>
+
+                <div class="about-feature-sub">
+                  Find events easily
+                </div>
+              </div>
+            </div>
+
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                ⏳
+              </div>
+
+              <div>
+                <div class="about-feature-text">
+                  Live Countdown Timers
+                </div>
+
+                <div class="about-feature-sub">
+                  Never miss important events
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer id="footer">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <div class="footer-logo">
+            EduFest.
+          </div>
+
+          <p class="footer-tagline">
+            Smart event management platform for
+            modern campuses and student communities.
+          </p>
+
+          <div class="footer-socials">
+
+            <a href="#" class="social-btn">
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="#" class="social-btn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="#" class="social-btn">
+              <i class="fab fa-github"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Quick Links</h4>
+
+          <ul>
+            <li><a href="./index.html#hero">Home</a></li>
+            <li><a href="./index.html#events">Events</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Events</h4>
+
+          <ul>
+            <li><a href="./index.html#events">Hackathons</a></li>
+            <li><a href="./index.html#events">Workshops</a></li>
+            <li><a href="./index.html#events">Seminars</a></li>
+          </ul>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Support</h4>
+
+          <ul>
+            <li><a href="./contact.html#faq">FAQs</a></li>
+            <li><a href="./contact.html">Help Center</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <div class="footer-copy">
+          © 2026 <span>EduFest</span>. All rights reserved.
+        </div>
+
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/carousel.js"></script>
+    <script src="./js/theme.js"></script>
+</body>
+</html>

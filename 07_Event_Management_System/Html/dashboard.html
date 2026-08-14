@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | EduFest</title>
+    <link rel="icon" type="image/svg+xml" href="./images/edufest_icon.svg">
+    
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/dashboard.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+</head>
+
+<body>
+
+    <!-- NAVBAR — unchanged -->
+
+    <header>
+        <nav id="navbar">
+            <div class="nav-logo">
+            Edu<span>Fest</span><span class="dot">.</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:20px;">
+
+                <a href="index.html" class="nav-cta">
+                    Home
+                </a>
+
+                <a href="./register.html" class="nav-cta">
+                    Register
+                </a>
+
+                <a href="./dashboard.html" class="nav-cta nav-active">
+                    Dashboard
+                </a>
+
+                <a href="./contact.html" class="nav-cta">
+                    Contact
+                </a>
+
+                <button id="themeToggle" class="nav-cta nav-theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- DASHBOARD -->
+
+    <section id="events">
+
+        <div class="container">
+
+            <div class="dashboard-hero">
+
+                <div>
+
+                    <div class="tag">
+                        Personal Dashboard
+                    </div>
+
+                    <h1 class="dashboard-title">
+
+                        Welcome,
+                        <span id="welcomeName">
+                            User
+                        </span>
+
+                    </h1>
+
+                    <p class="dashboard-subtitle">
+
+                        Track your registered events,
+                        upcoming workshops,
+                        and participation details.
+
+                    </p>
+
+                </div>
+
+                <div class="dashboard-stats-card">
+
+                    <h3>Total Registrations</h3>
+
+                    <div id="registrationCount">
+                        0
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- USER INFO CARD -->
+
+            <div class="dashboard-user-card">
+
+                <div class="dashboard-user-left">
+
+                    <div class="dashboard-avatar">
+                        👨‍🎓
+                    </div>
+
+                    <div>
+
+                        <h3 id="dashboardUserName">
+                            User
+                        </h3>
+
+                        <p id="dashboardUserEmail">
+                            email@gmail.com
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EVENT GRID -->
+
+            <div id="dashboardGrid">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer id="footer">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <div class="footer-logo">
+            EduFest.
+          </div>
+
+          <p class="footer-tagline">
+            Smart event management platform for
+            modern campuses and student communities.
+          </p>
+
+          <div class="footer-socials">
+
+            <a href="#" class="social-btn">
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="#" class="social-btn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="#" class="social-btn">
+              <i class="fab fa-github"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Quick Links</h4>
+
+          <ul>
+            <li><a href="./index.html#hero">Home</a></li>
+            <li><a href="./index.html#events">Events</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Events</h4>
+
+          <ul>
+            <li><a href="./index.html#events">Hackathons</a></li>
+            <li><a href="./index.html#events">Workshops</a></li>
+            <li><a href="./index.html#events">Seminars</a></li>
+          </ul>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Support</h4>
+
+          <ul>
+            <li><a href="./contact.html#faq">FAQs</a></li>
+            <li><a href="./contact.html">Help Center</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <div class="footer-copy">
+          © 2026 <span>EduFest</span>. All rights reserved.
+        </div>
+
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>   
+
+    <script src="./js/dashboard.js"></script>
+    <script src="./js/theme.js"></script>
+
+</body>
+
+</html>

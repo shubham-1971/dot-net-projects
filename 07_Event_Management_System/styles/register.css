@@ -1,0 +1,470 @@
+/* =========================================
+   REGISTER PAGE
+========================================= */
+
+.register-page{
+  min-height: 100vh;
+
+  padding-top: calc(var(--nav-h) + 60px);
+  padding-bottom: 80px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.register-bg{
+  position: fixed;
+  inset: 0;
+
+  z-index: -2;
+
+  background:
+    radial-gradient(
+      ellipse 60% 50% at 80% 20%,
+      rgba(255,159,28,.08) 0%,
+      transparent 60%
+    ),
+
+    radial-gradient(
+      ellipse 50% 40% at 20% 80%,
+      rgba(46,196,182,.07) 0%,
+      transparent 55%
+    ),
+
+    linear-gradient(
+      160deg,
+      #f8fafc 0%,
+      #ffffff 50%,
+      #f1f5f9 100%
+    );
+}
+
+/* DARK THEME */
+
+body.dark-theme .register-bg{
+  background:
+    radial-gradient(
+      ellipse 60% 50% at 80% 20%,
+      rgba(255,179,71,.10) 0%,
+      transparent 60%
+    ),
+
+    radial-gradient(
+      ellipse 50% 40% at 20% 80%,
+      rgba(52,214,195,.08) 0%,
+      transparent 55%
+    ),
+
+    linear-gradient(
+      160deg,
+      #0b1220 0%,
+      #111827 50%,
+      #172033 100%
+    );
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.register-container{
+  width: min(1200px, 92%);
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 60px;
+  align-items: center;
+}
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.register-left{
+  animation: fadeUp .7s ease;
+}
+
+.tag{
+  width: fit-content;
+
+  background: rgba(255,159,28,.12);
+
+  color: var(--accent);
+
+  padding: 8px 16px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  margin-bottom: 24px;
+}
+
+.register-title{
+  font-family: var(--font-head);
+
+  font-size: clamp(3rem, 8vw, 6rem);
+
+  line-height: .95;
+  letter-spacing: 3px;
+
+  margin-bottom: 20px;
+
+  color: var(--text);
+}
+
+.register-title span{
+  color: var(--accent);
+}
+
+.register-desc{
+  color: var(--muted);
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  max-width: 520px;
+
+  margin-bottom: 32px;
+}
+
+.register-points{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.register-points div{
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  padding: 16px 18px;
+
+  color: var(--text);
+
+  font-weight: 600;
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.register-points div:hover{
+  transform: translateX(4px);
+
+  border-color: rgba(255,159,28,.3);
+
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+/* =========================================
+   FORM BOX
+========================================= */
+
+.register-form-box{
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 22px;
+
+  padding: 36px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,.06);
+
+  animation: fadeUp .9s ease;
+}
+
+body.dark-theme .register-form-box{
+  box-shadow: 0 12px 40px rgba(0,0,0,.28);
+}
+
+.register-form-box::before{
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent),
+      var(--accent2)
+    );
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-group{
+  margin-bottom: 22px;
+}
+
+.form-group label{
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+.form-group input,
+.form-group select{
+  width: 100%;
+
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  padding: 14px 16px;
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+  font-size: 14px;
+
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+  outline: none;
+
+  border-color: var(--accent);
+
+  box-shadow: 0 0 0 4px rgba(255,159,28,.12);
+}
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group select{
+  background: rgba(255,255,255,.03);
+}
+
+body.dark-theme .form-group select{
+  width: 100%;
+
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  padding: 14px 16px;
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+  font-size: 14px;
+
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+/* =========================================
+   ERROR TEXT
+========================================= */
+
+.error-text{
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 12px;
+
+  color: var(--accent2);
+}
+
+/* =========================================
+   GENDER
+========================================= */
+
+.gender-options{
+  display: flex;
+  gap: 14px;
+}
+
+.gender-card{
+  flex: 1;
+
+  cursor: pointer;
+}
+
+.gender-card input{
+  display: none;
+}
+
+.gender-card span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+
+  color: var(--text);
+
+  font-weight: 600;
+
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.gender-card:hover span{
+  border-color: var(--accent);
+}
+
+.gender-card input:checked + span{
+  background: rgba(255,159,28,.12);
+
+  border-color: var(--accent);
+
+  color: var(--accent);
+
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.register-submit-btn{
+  width: 100%;
+
+  border: none;
+
+  background: var(--accent);
+
+  color: #111;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  margin-top: 10px;
+
+  box-shadow: 0 10px 28px rgba(255,159,28,.25);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    opacity .25s ease;
+}
+
+.register-submit-btn:hover{
+  transform: translateY(-3px);
+
+  box-shadow: 0 14px 34px rgba(255,159,28,.35);
+}
+
+.register-submit-btn:active{
+  transform: scale(.98);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeUp{
+  from{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width: 900px){
+
+  .register-container{
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .register-left{
+    text-align: center;
+  }
+
+  .register-points{
+    max-width: 500px;
+    margin: auto;
+  }
+}
+
+@media(max-width: 600px){
+
+  .register-page{
+    padding-top: calc(var(--nav-h) + 30px);
+  }
+
+  .register-form-box{
+    padding: 24px;
+  }
+
+  .register-title{
+    font-size: 4rem;
+  }
+
+  .gender-options{
+    flex-direction: column;
+  }
+}

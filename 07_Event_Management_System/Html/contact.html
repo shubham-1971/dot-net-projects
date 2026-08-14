@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | EduFest</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="./styles/contact.css">
+  <link rel="stylesheet" href="./styles/style.css"/>
+  <link rel="icon" type="image/svg+xml" href="./images/edufest_icon.svg">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+        <nav id="navbar">
+            <div class="nav-logo">
+            Edu<span>Fest</span><span class="dot">.</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:20px;">
+
+                <a href="./index.html" target="_parent" class="nav-cta">
+                    Home
+                </a>
+
+                <a href="register.html" target="_parent" class="nav-cta">
+                    Register
+                </a>
+
+                <a href="dashboard.html" target="_parent" class="nav-cta">
+                    Dashboard
+                </a>
+
+                <a href="./contact.html" class="nav-cta nav-active">
+                    Contact
+                </a>
+
+                <button id="themeToggle" class="nav-cta nav-theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+        
+    </header>
+
+ 
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-page">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- LEFT: INFO -->
+        <div class="contact-info">
+          <div class="tag">Get in Touch</div>
+          <h2>CONTACT <span>US</span></h2>
+          <p>Have questions about events, registrations, or partnerships? Reach out and we will get back to you within 24 hours.</p>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="info-text">
+              Email Us
+              <small>hello@edufest.ac.in</small>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="info-text">
+              Call Us
+              <small>+91 98765 43210</small>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="info-text">
+              Visit Us
+              <small>Campus Center, Block A</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: CONTACT FORM -->
+        <div class="form-card" id="contactFormCard">
+          <h3 style="font-family:var(--font-head);font-size:1.6rem;letter-spacing:1px;margin-bottom:20px;">
+            SEND A <span style="color:var(--accent);">MESSAGE</span>
+          </h3>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-input" id="firstName" placeholder="John" required>
+                <span class="error-msg" id="firstNameError">Please enter your first name</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-input" id="lastName" placeholder="Doe" required>
+                <span class="error-msg" id="lastNameError">Please enter your last name</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" id="email" placeholder="john@example.com" required>
+              <span class="error-msg" id="emailError">Please enter a valid email</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Subject</label>
+              <select class="form-select" id="subject" required>
+                <option value="">Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="event">Event Question</option>
+                <option value="register">Registration Issue</option>
+                <option value="partner">Partnership</option>
+              </select>
+              <span class="error-msg" id="subjectError">Please select a subject</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" id="message" placeholder="How can we help you?" required minlength="10"></textarea>
+              <span class="error-msg" id="messageError">Message must be at least 10 characters</span>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              Send Message <i class="fa-solid fa-paper-plane" style="margin-left:6px;"></i>
+            </button>
+          </form>
+
+          <div class="success-msg" id="contactSuccess">
+            <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+            <h4 style="font-family:var(--font-head);font-size:1.4rem;letter-spacing:1px;">MESSAGE SENT!</h4>
+            <p style="color:var(--muted);font-size:14px;margin-top:6px;">We will get back to you soon.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEEDBACK SECTION -->
+      <div class="feedback-section">
+        <div class="feedback-grid">
+
+          <!-- LEFT: FEEDBACK FORM -->
+          <div class="form-card" id="feedbackFormCard">
+            <h3 style="font-family:var(--font-head);font-size:1.6rem;letter-spacing:1px;margin-bottom:8px;">
+              SHARE YOUR <span style="color:var(--accent);">FEEDBACK</span>
+            </h3>
+            <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Help us improve your event experience.</p>
+
+            <form id="feedbackForm" novalidate>
+              <div class="form-group">
+                <label class="form-label">Your Name</label>
+                <input type="text" class="form-input" id="fbName" placeholder="Your name" required>
+                <span class="error-msg" id="fbNameError">Name is required</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Event Attended</label>
+                <select class="form-select" id="fbEvent" required>
+                  <option value="">Select event</option>
+                  <option value="hackathon">Hackathon 2026</option>
+                  <option value="aiworkshop">AI Workshop</option>
+                  <option value="startup">Startup Summit</option>
+                  <option value="uiux">UI/UX Bootcamp</option>
+                </select>
+                <span class="error-msg" id="fbEventError">Please select an event</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Rating</label>
+                <div class="rating-group" id="starGroup">
+                  <button type="button" class="star-btn" data-value="1">★</button>
+                  <button type="button" class="star-btn" data-value="2">★</button>
+                  <button type="button" class="star-btn" data-value="3">★</button>
+                  <button type="button" class="star-btn" data-value="4">★</button>
+                  <button type="button" class="star-btn" data-value="5">★</button>
+                </div>
+                <input type="hidden" id="fbRating" required>
+                <span class="error-msg" id="fbRatingError">Please give a rating</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Your Feedback</label>
+                <textarea class="form-textarea" id="fbMessage" placeholder="Tell us about your experience..." required minlength="15"></textarea>
+                <span class="error-msg" id="fbMessageError">Feedback must be at least 15 characters</span>
+              </div>
+
+              <button type="submit" class="btn-submit" id="fbSubmitBtn">
+                Submit Feedback <i class="fa-solid fa-star" style="margin-left:6px;"></i>
+              </button>
+            </form>
+
+            <div class="success-msg" id="feedbackSuccess">
+              <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+              <h4 style="font-family:var(--font-head);font-size:1.4rem;letter-spacing:1px;">THANK YOU!</h4>
+              <p style="color:var(--muted);font-size:14px;margin-top:6px;">Your feedback helps us grow.</p>
+            </div>
+          </div>
+
+          <!-- RIGHT: INFO -->
+          <div class="contact-info" style="padding-top:20px;">
+            <div class="tag">We Value You</div>
+            <h2>YOUR <span>VOICE</span> MATTERS</h2>
+            <p>Every suggestion, complaint, or compliment helps us build better events for the student community. Take a moment to share your thoughts.</p>
+
+            <div class="info-card">
+              <div class="info-icon" style="background:rgba(46,196,182,.1);color:var(--accent3);"><i class="fa-solid fa-clock"></i></div>
+              <div class="info-text">
+                Response Time
+                <small>Within 48 hours</small>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon" style="background:rgba(255,77,109,.1);color:var(--accent2);"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="info-text">
+                Privacy Protected
+                <small>Your data is safe with us</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- FAQ SECTION -->
+  <section class="faq-page" id="faq">
+    <div class="container">
+
+      <div class="faq-header">
+        <div class="tag">Help Center</div>
+        <h2>FREQUENTLY ASKED <span>QUESTIONS</span></h2>
+        <p>Everything you need to know about EduFest events, registrations, and more.</p>
+      </div>
+
+      <!-- Search -->
+      <div class="faq-search-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 5.5 5.5a7.5 7.5 0 0 0 11.15 11.15Z" />
+        </svg>
+        <input type="text" class="faq-search" id="faqSearch" placeholder="Search questions...">
+      </div>
+
+      <!-- FAQ Grid -->
+      <div class="faq-grid" id="faqGrid">
+
+        <div class="faq-item" data-question="register sign up how to">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">
+              <span class="faq-icon"><i class="fa-solid fa-user-plus"></i></span>
+              How do I register for an event?
+            </span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Click the "Register" button on any event card or visit the <a href="register.html">Registration Page</a>. Fill in your details, select the event, and submit. You will receive a confirmation instantly.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-question="cost free payment fee price">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">
+              <span class="faq-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+              Are events free to attend?
+            </span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Many events like Hackathons and Startup Summits are completely free. Some workshops may have a nominal fee (₹299–₹499) to cover materials and certificates.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-question="certificate participation">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">
+              <span class="faq-icon"><i class="fa-solid fa-certificate"></i></span>
+              Will I get a certificate?
+            </span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes! All participants receive a digital certificate of participation. Winners and top performers get additional merit certificates and goodies.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-question="team group members hackathon">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">
+              <span class="faq-icon"><i class="fa-solid fa-users"></i></span>
+              Can I participate as a team?
+            </span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Absolutely! Hackathons allow teams of 2–4 members. Each member must register individually and mention the team name during registration.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-question="cancel refund unregister">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">
+              <span class="faq-icon"><i class="fa-solid fa-ban"></i></span>
+              How do I cancel my registration?
+            </span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Visit your <a href="dashboard.html">Dashboard</a> to view registered events. Click "Cancel" next to the event you wish to withdraw from. Refunds for paid events are processed within 5–7 working days.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-question="bring laptop equipment items">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">
+              <span class="faq-icon"><i class="fa-solid fa-laptop"></i></span>
+              What should I bring to the event?
+            </span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Bring your college ID card, a laptop (for coding events), a notebook, and a water bottle. For workshops, specific requirements will be emailed to you before the event.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-question="food lunch snacks refreshments">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">
+              <span class="faq-icon"><i class="fa-solid fa-utensils"></i></span>
+              Is food provided during events?
+            </span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes, full-day events include complimentary lunch and refreshments. Snacks and beverages are provided during breaks for all half-day workshops and seminars.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-question="contact support help reach">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">
+              <span class="faq-icon"><i class="fa-solid fa-headset"></i></span>
+              How do I contact support?
+            </span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              You can reach us via the <a href="contact.html">Contact Page</a>, email us at hello@edufest.ac.in, or call +91 98765 43210. Our support team is available Monday–Saturday, 9 AM to 6 PM.
+            </div>
+          </div>
+        </div>
+
+        <!-- No results message -->
+        <div class="faq-no-results" id="noResults">
+          <div class="nr-icon">🔍</div>
+          <h3>No Questions Found</h3>
+          <p>Try a different search term or <a href="contact.html">contact us</a> directly.</p>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="faq-cta">
+        <h3>STILL HAVE <span style="color:var(--accent);">QUESTIONS?</span></h3>
+        <p>Cannot find what you are looking for? Reach out to our team directly.</p>
+        <a href="contact.html" target="_self" class="btn-primary">Contact Support</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer id="footer">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <div class="footer-logo">
+            EduFest.
+          </div>
+
+          <p class="footer-tagline">
+            Smart event management platform for
+            modern campuses and student communities.
+          </p>
+
+          <div class="footer-socials">
+
+            <a href="#" class="social-btn">
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="#" class="social-btn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="#" class="social-btn">
+              <i class="fab fa-github"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Quick Links</h4>
+
+          <ul>
+            <li><a href="./index.html#hero">Home</a></li>
+            <li><a href="./index.html#events">Events</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Events</h4>
+
+          <ul>
+            <li><a href="./index.html#events">Hackathons</a></li>
+            <li><a href="./index.html#events">Workshops</a></li>
+            <li><a href="./index.html#events">Seminars</a></li>
+          </ul>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Support</h4>
+
+          <ul>
+            <li><a href="./contact.html#faq">FAQs</a></li>
+            <li><a href="./contact.html">Help Center</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <div class="footer-copy">
+          © 2026 <span>EduFest</span>. All rights reserved.
+        </div>
+
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script src="./js/app.js"></script>
+  <script src="./js/contact.js"></script>
+  <script src="./js/theme.js"></script>
+</body>
+</html>
