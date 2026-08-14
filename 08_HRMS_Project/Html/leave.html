@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>workpeople · Leave Center</title>
+  <!-- Tabler Icons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loader Overlay -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">workpeople</div>
+  </div>
+
+  <div class="app-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <button id="mobile-hamburger" class="mobile-hamburger" aria-label="Toggle Navigation">
+        <i class="ti ti-menu-2"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <i class="ti ti-layers-difference" style="color: var(--accent); font-size: 19px;"></i>
+        work<span>people</span>
+      </a>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+          <i class="ti ti-moon"></i>
+        </button>
+        <div class="user-profile-menu">
+          <div class="avatar-nav">A</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="main-workspace">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-top">
+          <ul class="sidebar-menu">
+            <li class="sidebar-label">Management</li>
+            <li class="sidebar-item">
+              <a href="index.html">
+                <i class="ti ti-dashboard"></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="employee.html">
+                <i class="ti ti-users"></i>
+                Employees
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="department.html">
+                <i class="ti ti-hierarchy-2"></i>
+                Departments
+              </a>
+            </li>
+            <li class="sidebar-item active">
+              <a href="leave.html">
+                <i class="ti ti-calendar-event"></i>
+                Leave Center
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="reports.html">
+                <i class="ti ti-chart-bar"></i>
+                Reports
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-user-block">
+          <div class="avatar-sidebar">HR</div>
+          <div class="user-info">
+            <div id="hr-admin-card">
+              <span class="user-name">Suresh Iyer</span>
+            <span class="user-role">HR Administrator</span>
+            </div>
+            <div id="Emp-card" style="display: none;">
+              <span class="Emp-name">S
+                
+              </span>
+            <span class="Emp-role">Employee Board</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="content-viewport">
+        <div class="eyebrow">Time Off Tracker</div>
+        <div class="page-header">
+          <h1 class="page-title">Leave <span>Center</span></h1>
+        </div>
+
+        <div class="grid-2col">
+          <!-- Left Main Card: Leave Applications List -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Leave Applications Log</h2>
+            </div>
+            <div class="card-body">
+              <!-- Filters bar -->
+              <div class="filter-bar">
+                <div class="filter-search" style="flex: 1; min-width: 150px;">
+                  <input type="text" id="leave-search" class="form-control" placeholder="Search by name, ID or type...">
+                </div>
+                <div class="filter-status">
+                  <select id="leave-status-filter" class="form-control">
+                    <option value="">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Table -->
+              <div class="table-container">
+                <table class="table" id="leaves-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Employee</th>
+                      <th>Leave Type</th>
+                      <th>Duration</th>
+                      <th>Calculated Days</th>
+                      <th>Reason</th>
+                      <th>Status</th>
+                      <th style="width: 120px; text-align: right;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Card: Apply Leave Form -->
+          <div class="card" style="height: fit-content;">
+            <div class="card-header">
+              <h2 class="card-title">Request Leave</h2>
+            </div>
+            <div class="card-body">
+              <form id="apply-leave-form" novalidate>
+                <!-- Employee ID lookup -->
+                <div class="form-group">
+                  <label class="form-label" for="leave-emp-id">Employee ID *</label>
+                  <input type="text" id="leave-emp-id" name="employeeId" class="form-control" placeholder="e.g. WP-1001" style="text-transform: uppercase;">
+                </div>
+
+                <!-- Auto lookup Name (Read-only) -->
+                <div class="form-group">
+                  <label class="form-label">Employee Name</label>
+                  <input type="text" id="leave-emp-name" class="form-control" readonly style="background-color: var(--neutral-bg); font-weight: 600;" placeholder="Enter ID to lookup name...">
+                </div>
+
+                <!-- Leave Type -->
+                <div class="form-group">
+                  <label class="form-label" for="leave-type">Leave Category *</label>
+                  <select id="leave-type" name="type" class="form-control">
+                    <option value="">Select Category</option>
+                    <option value="Casual Leave">Casual Leave</option>
+                    <option value="Sick Leave">Sick Leave</option>
+                    <option value="Earned Leave">Earned Leave</option>
+                    <option value="Maternity Leave">Maternity Leave</option>
+                    <option value="Paternity Leave">Paternity Leave</option>
+                  </select>
+                </div>
+
+                <!-- Start Date -->
+                <div class="form-group">
+                  <label class="form-label" for="leave-start-date">Start Date *</label>
+                  <input type="date" id="leave-start-date" name="startDate" class="form-control">
+                </div>
+
+                <!-- End Date -->
+                <div class="form-group">
+                  <label class="form-label" for="leave-end-date">End Date *</label>
+                  <input type="date" id="leave-end-date" name="endDate" class="form-control">
+                </div>
+
+                <!-- Live Calculated duration -->
+                <div class="form-group">
+                  <label class="form-label">Requested Duration</label>
+                  <div style="background-color: var(--accent-bg); border: 1px solid var(--border); padding: 8px 12px; border-radius: var(--radius-md); font-size: 13px; color: var(--accent-text); font-weight: 600;">
+                    <span id="calculated-duration-days">0</span> working days (excluding weekends)
+                  </div>
+                </div>
+
+                <!-- Reason -->
+                <div class="form-group">
+                  <label class="form-label" for="leave-reason">Reason *</label>
+                  <textarea id="leave-reason" name="reason" class="form-control" rows="3" placeholder="Brief explanation of request..."></textarea>
+                </div>
+
+                <div style="margin-top: 18px;">
+                  <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="ti ti-calendar-plus"></i> Submit Request
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+    <i class="ti ti-arrow-up"></i>
+  </button>
+
+  <!-- jQuery & Core Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/leave.js"></script>
+</body>
+</html>

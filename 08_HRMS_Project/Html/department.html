@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>workpeople · Departments</title>
+  <!-- Tabler Icons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loader Overlay -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">workpeople</div>
+  </div>
+
+  <div class="app-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <button id="mobile-hamburger" class="mobile-hamburger" aria-label="Toggle Navigation">
+        <i class="ti ti-menu-2"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <i class="ti ti-layers-difference" style="color: var(--accent); font-size: 19px;"></i>
+        work<span>people</span>
+      </a>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+          <i class="ti ti-moon"></i>
+        </button>
+        <div class="user-profile-menu">
+          <div class="avatar-nav">A</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="main-workspace">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-top">
+          <ul class="sidebar-menu">
+            <li class="sidebar-label">Management</li>
+            <li class="sidebar-item">
+              <a href="index.html">
+                <i class="ti ti-dashboard"></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="employee.html">
+                <i class="ti ti-users"></i>
+                Employees
+              </a>
+            </li>
+            <li class="sidebar-item active">
+              <a href="department.html">
+                <i class="ti ti-hierarchy-2"></i>
+                Departments
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="leave.html">
+                <i class="ti ti-calendar-event"></i>
+                Leave Center
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="reports.html">
+                <i class="ti ti-chart-bar"></i>
+                Reports
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-user-block">
+          <div class="avatar-sidebar">HR</div>
+          <div class="user-info">
+            <span class="user-name">Suresh Iyer</span>
+            <span class="user-role">HR Administrator</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="content-viewport">
+        <div class="eyebrow">Enterprise Hierarchy</div>
+        <div class="page-header">
+          <h1 class="page-title">Department <span>Directory</span></h1>
+          <button id="btn-open-dept-modal" class="btn btn-primary">
+            <i class="ti ti-plus"></i> Add Department
+          </button>
+        </div>
+
+        <!-- Controls Filter bar -->
+        <div class="filter-bar" style="margin-bottom: 20px;">
+          <div class="filter-search" style="max-width: 350px;">
+            <input type="text" id="dept-search" class="form-control" placeholder="Search departments by name or manager...">
+          </div>
+          <div class="filter-sorting">
+            <button id="btn-sort-alphabetical" class="btn btn-secondary" style="border-color: var(--border);">
+              <i class="ti ti-sort-ascending-letters"></i> Sort A-Z
+            </button>
+          </div>
+        </div>
+
+        <!-- Departments Grid -->
+        <div class="grid-3col" id="departments-grid">
+          <!-- Dynamically populated -->
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Add/Edit Department Modal -->
+  <div id="dept-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title-text">Create Department</h3>
+        <button class="modal-close" id="btn-close-dept-modal">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+      <form id="dept-form" novalidate>
+        <div class="modal-body">
+          <input type="hidden" id="dept-editing-id">
+          
+          <!-- Code / Short Name -->
+          <div class="form-group">
+            <label class="form-label" for="dept-code">Department Code *</label>
+            <input type="text" id="dept-code" name="code" class="form-control" placeholder="e.g. ENG, HR, FIN">
+          </div>
+
+          <!-- Name -->
+          <div class="form-group">
+            <label class="form-label" for="dept-name">Department Name *</label>
+            <input type="text" id="dept-name" name="name" class="form-control" placeholder="e.g. Engineering">
+          </div>
+
+          <!-- Manager -->
+          <div class="form-group">
+            <label class="form-label" for="dept-manager">Manager *</label>
+            <select id="dept-manager" name="manager" class="form-control">
+              <!-- Dynamically populated from employees roster -->
+            </select>
+          </div>
+
+          <!-- Extension -->
+          <div class="form-group">
+            <label class="form-label" for="dept-extension">Extension Number *</label>
+            <input type="text" id="dept-extension" name="extension" class="form-control" placeholder="e.g. x205">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-decline" id="btn-cancel-dept-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-dept">Save Department</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+    <i class="ti ti-arrow-up"></i>
+  </button>
+
+  <!-- jQuery & Core Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/department.js"></script>
+</body>
+</html>

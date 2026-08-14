@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>workpeople · Reports & Analytics</title>
+  <!-- Tabler Icons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loader Overlay -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">workpeople</div>
+  </div>
+
+  <div class="app-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <button id="mobile-hamburger" class="mobile-hamburger" aria-label="Toggle Navigation">
+        <i class="ti ti-menu-2"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <i class="ti ti-layers-difference" style="color: var(--accent); font-size: 19px;"></i>
+        work<span>people</span>
+      </a>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+          <i class="ti ti-moon"></i>
+        </button>
+        <div class="user-profile-menu">
+          <div class="avatar-nav">A</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="main-workspace">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-top">
+          <ul class="sidebar-menu">
+            <li class="sidebar-label">Management</li>
+            <li class="sidebar-item">
+              <a href="index.html">
+                <i class="ti ti-dashboard"></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="employee.html">
+                <i class="ti ti-users"></i>
+                Employees
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="department.html">
+                <i class="ti ti-hierarchy-2"></i>
+                Departments
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="leave.html">
+                <i class="ti ti-calendar-event"></i>
+                Leave Center
+              </a>
+            </li>
+            <li class="sidebar-item active">
+              <a href="reports.html">
+                <i class="ti ti-chart-bar"></i>
+                Reports
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-user-block">
+          <div class="avatar-sidebar">HR</div>
+          <div class="user-info">
+            <span class="user-name">Suresh Iyer</span>
+            <span class="user-role">HR Administrator</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="content-viewport">
+        <div class="eyebrow">Enterprise Intelligence</div>
+        <div class="page-header">
+          <h1 class="page-title">Reports & <span>Analytics</span></h1>
+          <button id="btn-print-report" class="btn btn-primary">
+            <i class="ti ti-printer"></i> Print Report
+          </button>
+        </div>
+
+        <!-- Animated KPI Counters Strip -->
+        <div class="kpi-grid">
+          <!-- Total Employees -->
+          <div class="kpi-card kpi-neutral">
+            <div class="kpi-label">Active Staff</div>
+            <div class="kpi-value counter-animate" id="counter-total" data-target="0">0</div>
+            <div class="kpi-subtext">Active employees</div>
+            <i class="ti ti-users kpi-icon"></i>
+          </div>
+
+          <!-- Attendance Avg -->
+          <div class="kpi-card kpi-green">
+            <div class="kpi-label">Weekly Attendance</div>
+            <div class="kpi-value"><span class="counter-animate" id="counter-attendance" data-target="0">0</span>%</div>
+            <div class="kpi-subtext">Weekly average</div>
+            <i class="ti ti-circle-check kpi-icon"></i>
+          </div>
+
+          <!-- On Leave Today -->
+          <div class="kpi-card kpi-blue">
+            <div class="kpi-label">Out of Office</div>
+            <div class="kpi-value counter-animate" id="counter-leave" data-target="0">0</div>
+            <div class="kpi-subtext">Leaves today</div>
+            <i class="ti ti-calendar-event kpi-icon"></i>
+          </div>
+
+          <!-- Monthly Payroll -->
+          <div class="kpi-card kpi-red">
+            <div class="kpi-label">Monthly Payroll</div>
+            <div class="kpi-value">₹<span class="counter-animate" id="counter-payroll" data-target="0">0</span></div>
+            <div class="kpi-subtext">Active salary overhead</div>
+            <i class="ti ti-wallet kpi-icon"></i>
+          </div>
+        </div>
+
+        <!-- Visual Analytics Grid -->
+        <div class="grid-2col">
+          <!-- Left side: ChartJS Visualizations -->
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <!-- Chart 1: Daily Status (Doughnut) -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Daily Attendance Status</h3>
+              </div>
+              <div class="card-body" style="display: flex; justify-content: center; align-items: center; min-height: 240px;">
+                <div style="width: 100%; max-width: 280px;">
+                  <canvas id="chart-daily-status"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart 2: Weekly Trends (Bar) -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Weekly Attendance Rate %</h3>
+              </div>
+              <div class="card-body" style="min-height: 240px;">
+                <canvas id="chart-weekly-rate" style="max-height: 220px;"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side: Progress bars & allocations -->
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <!-- Department Ratio Progress Bars -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Department Staff Ratios</h3>
+              </div>
+              <div class="card-body" id="department-progress-container" style="display: flex; flex-direction: column; gap: 4px;">
+                <!-- Dynamically loaded progress bars -->
+              </div>
+            </div>
+
+            <!-- Chart 3: Leave Type Allocations (Horizontal Bar) -->
+            <div class="card" style="flex: 1;">
+              <div class="card-header">
+                <h3 class="card-title">Leave Allocations (Total Days Requested)</h3>
+              </div>
+              <div class="card-body" style="min-height: 220px;">
+                <canvas id="chart-leave-allocation" style="max-height: 200px;"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+    <i class="ti ti-arrow-up"></i>
+  </button>
+
+  <!-- jQuery, Chart.js & Core Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/reports.js"></script>
+</body>
+</html>

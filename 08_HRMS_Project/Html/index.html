@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>workpeople · Dashboard</title>
+  <!-- Tabler Icons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loader Overlay -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">workpeople</div>
+  </div>
+
+  <div class="app-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <button id="mobile-hamburger" class="mobile-hamburger" aria-label="Toggle Navigation">
+        <i class="ti ti-menu-2"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <i class="ti ti-layers-difference" style="color: var(--accent); font-size: 19px;"></i>
+        work<span>people</span>
+      </a>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+          <i class="ti ti-moon"></i>
+        </button>
+        <div class="user-profile-menu">
+          <div class="avatar-nav">A</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="main-workspace">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-top">
+          <ul class="sidebar-menu">
+            <li class="sidebar-label">Management</li>
+            <li class="sidebar-item active">
+              <a href="index.html">
+                <i class="ti ti-dashboard"></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="employee.html">
+                <i class="ti ti-users"></i>
+                Employees
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="department.html">
+                <i class="ti ti-hierarchy-2"></i>
+                Departments
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="leave.html">
+                <i class="ti ti-calendar-event"></i>
+                Leave Center
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="reports.html">
+                <i class="ti ti-chart-bar"></i>
+                Reports
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-user-block">
+          <div class="avatar-sidebar">HR</div>
+          <div class="user-info">
+            <span class="user-name">Suresh Iyer</span>
+            <span class="user-role">HR Administrator</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="content-viewport">
+        <div class="eyebrow">Overview Dashboard</div>
+        <div class="page-header">
+          <h1 class="page-title">Welcome back, <span>Suresh</span></h1>
+        </div>
+
+        <!-- KPI Metrics Strip -->
+        <div class="kpi-grid">
+          <!-- Total Employees -->
+          <div class="kpi-card kpi-neutral">
+            <div class="kpi-label">Total Employees</div>
+            <div class="kpi-value" id="kpi-total-employees">--</div>
+            <div class="kpi-subtext">
+              <i class="ti ti-users"></i>
+              <span>Active in database</span>
+            </div>
+            <i class="ti ti-users kpi-icon"></i>
+          </div>
+
+          <!-- Attendance Rate -->
+          <div class="kpi-card kpi-green">
+            <div class="kpi-label">Attendance Rate</div>
+            <div class="kpi-value" id="kpi-attendance-rate">--%</div>
+            <div class="kpi-subtext">
+              <i class="ti ti-trending-up" style="color: var(--green);"></i>
+              <span>Average this week</span>
+            </div>
+            <i class="ti ti-circle-check kpi-icon"></i>
+          </div>
+
+          <!-- On Leave Today -->
+          <div class="kpi-card kpi-blue">
+            <div class="kpi-label">On Leave Today</div>
+            <div class="kpi-value" id="kpi-on-leave">--</div>
+            <div class="kpi-subtext">
+              <i class="ti ti-calendar-off"></i>
+              <span id="kpi-on-leave-subtext">Scheduled out</span>
+            </div>
+            <i class="ti ti-calendar-event kpi-icon"></i>
+          </div>
+
+          <!-- Monthly Payroll -->
+          <div class="kpi-card kpi-red">
+            <div class="kpi-label">Monthly Payroll</div>
+            <div class="kpi-value" id="kpi-payroll">₹0</div>
+            <div class="kpi-subtext">
+              <i class="ti ti-wallet"></i>
+              <span>Active staff total</span>
+            </div>
+            <i class="ti ti-wallet kpi-icon"></i>
+          </div>
+        </div>
+
+        <!-- Main Two Column Grid -->
+        <div class="grid-2col">
+          <!-- Left Main Card: Employee Roster Grid & Actions -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Employee Quick Roster</h2>
+              <div class="pagination-controls">
+                <select id="roster-page-limit" class="form-control" style="width: auto; padding: 4px 10px; font-size: 11px; height: auto;">
+                  <option value="10">10 Rows</option>
+                  <option value="25" selected>25 Rows</option>
+                  <option value="50">50 Rows</option>
+                </select>
+              </div>
+            </div>
+            <div class="card-body">
+              <!-- Filters bar -->
+              <div class="filter-bar">
+                <div class="filter-search">
+                  <input type="text" id="roster-search" class="form-control" placeholder="Search employees by name, role, ID...">
+                </div>
+                <div class="filter-department">
+                  <select id="roster-dept-filter" class="form-control">
+                    <option value="">All Departments</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Table -->
+              <div class="table-container">
+                <table class="table" id="roster-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 50px;">Avatar</th>
+                      <th>ID</th>
+                      <th>Employee</th>
+                      <th>Role</th>
+                      <th>Department</th>
+                      <th>Salary</th>
+                      <th>Status</th>
+                      <th style="width: 100px; text-align: right;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Pagination Info -->
+              <div class="pagination-container">
+                <div class="pagination-info" id="roster-pagination-info">
+                  Showing 1-5 of 5 entries
+                </div>
+                <div class="pagination-controls" id="roster-pagination-buttons">
+                  <!-- JS generated -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Sidebar Widgets -->
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <!-- Daily Attendance Marker Widget -->
+            <div class="card">
+              <div class="card-header" style="border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="card-title" style="display: flex; align-items: center; gap: 4px;"><i class="ti ti-calendar-check" style="color: var(--accent);"></i> Daily Attendance</h2>
+                <span class="badge badge-neutral" id="attendance-today-date" style="font-size: 10px;">Today</span>
+              </div>
+              <div class="card-body tight">
+                <div class="widget-list" id="attendance-marker-list" style="padding: 10px 14px; display: flex; flex-direction: column; gap: 8px;">
+                  <!-- Dynamically populated from active employees -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Leave Approvals -->
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Pending Leaves</h2>
+              </div>
+              <div class="card-body tight">
+                <div class="widget-list" id="pending-leaves-list" style="padding: 10px 14px;">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Today's Schedule -->
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Today's Schedule</h2>
+              </div>
+              <div class="card-body tight">
+                <div class="widget-list" style="padding: 10px 14px;">
+                  <div class="schedule-list" id="schedule-list">
+                    <!-- Dynamic or Static Schedule events -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Hires -->
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Recent Hires</h2>
+              </div>
+              <div class="card-body tight">
+                <div class="widget-list" id="recent-hires-list" style="padding: 10px 14px;">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+    <i class="ti ti-arrow-up"></i>
+  </button>
+
+  <!-- jQuery & Core Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  
+  <!-- Dashboard Page Controller -->
+  <script>
+    $(document).ready(function() {
+      // Load Departments inside filters
+      function loadDeptFilters() {
+        const departments = StorageEngine.getDepartments();
+        const $filter = $("#roster-dept-filter");
+        $filter.html('<option value="">All Departments</option>');
+        departments.forEach(dept => {
+          $filter.append(`<option value="${dept.name}">${dept.name}</option>`);
+        });
+      }
+
+      // Calculations and KPI loading
+      function loadKPIs() {
+        const employees = StorageEngine.getEmployees();
+        const activeEmployees = employees.filter(e => e.status === "Active");
+        
+        // Total Employees
+        $("#kpi-total-employees").text(activeEmployees.length);
+        
+        // Payroll (Active only)
+        const totalPayroll = activeEmployees.reduce((sum, e) => sum + Number(e.salary), 0);
+        $("#kpi-payroll").text("₹" + totalPayroll.toLocaleString("en-IN"));
+
+        // On Leave Today
+        const leaves = StorageEngine.getLeaves();
+        const todayStr = new Date().toISOString().split('T')[0];
+        const onLeaveCount = leaves.filter(l => {
+          return l.status === "Approved" && todayStr >= l.startDate && todayStr <= l.endDate;
+        }).length;
+        $("#kpi-on-leave").text(onLeaveCount);
+
+        // Attendance Rate
+        const attendanceData = StorageEngine.getAttendance();
+        let totalRecords = 0;
+        let presentRecords = 0;
+        Object.keys(attendanceData).forEach(date => {
+          const dayMatrix = attendanceData[date];
+          Object.keys(dayMatrix).forEach(empId => {
+            totalRecords++;
+            if (dayMatrix[empId] === "Present") {
+              presentRecords++;
+            }
+          });
+        });
+        const attendanceRate = totalRecords > 0 ? Math.round((presentRecords / totalRecords) * 100) : 95;
+        $("#kpi-attendance-rate").text(attendanceRate + "%");
+      }
+
+      // Roster Table Pagination & Variables
+      let currentPage = 1;
+      let limit = parseInt($("#roster-page-limit").val()) || 25;
+      let inlineEditingId = null;
+
+      function loadRoster() {
+        const employees = StorageEngine.getEmployees();
+        const search = $("#roster-search").val().toLowerCase().trim();
+        const deptFilter = $("#roster-dept-filter").val();
+
+        // Filtering
+        let filtered = employees.filter(emp => {
+          const matchSearch = !search || 
+            emp.id.toLowerCase().includes(search) || 
+            emp.name.toLowerCase().includes(search) || 
+            emp.role.toLowerCase().includes(search);
+          const matchDept = !deptFilter || emp.department === deptFilter;
+          return matchSearch && matchDept;
+        });
+
+        // Pagination calculations
+        const totalEntries = filtered.length;
+        const totalPages = Math.ceil(totalEntries / limit) || 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        const startIdx = (currentPage - 1) * limit;
+        const endIdx = Math.min(startIdx + limit, totalEntries);
+        const paginated = filtered.slice(startIdx, endIdx);
+
+        // Table updates
+        const $tbody = $("#roster-table tbody");
+        $tbody.empty();
+
+        if (paginated.length === 0) {
+          $tbody.append('<tr><td colspan="8" style="text-align: center; color: var(--muted); padding: 20px;">No matching employees found</td></tr>');
+        } else {
+          paginated.forEach(emp => {
+            const initials = emp.name.split(" ").map(n => n[0]).join("").substring(0, 2).toUpperCase();
+            const isEditing = inlineEditingId === emp.id;
+
+            let rowHtml = "";
+            if (isEditing) {
+              rowHtml = `
+                <tr data-id="${emp.id}">
+                  <td>
+                    <div class="table-avatar">${initials}</div>
+                  </td>
+                  <td style="font-weight: 600; color: var(--accent);">${emp.id}</td>
+                  <td>
+                    <input type="text" class="form-control inline-edit-name" value="${emp.name}" style="padding: 4px 8px; font-size: 13px;">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control inline-edit-role" value="${emp.role}" style="padding: 4px 8px; font-size: 13px;">
+                  </td>
+                  <td>
+                    <select class="form-control inline-edit-dept" style="padding: 4px 8px; font-size: 13px;">
+                      ${StorageEngine.getDepartments().map(d => `<option value="${d.name}" ${d.name === emp.department ? 'selected' : ''}>${d.name}</option>`).join("")}
+                    </select>
+                  </td>
+                  <td>
+                    <input type="number" class="form-control inline-edit-salary" value="${emp.salary}" style="padding: 4px 8px; font-size: 13px;">
+                  </td>
+                  <td>
+                    <select class="form-control inline-edit-status" style="padding: 4px 8px; font-size: 13px;">
+                      <option value="Active" ${emp.status === 'Active' ? 'selected' : ''}>Active</option>
+                      <option value="Inactive" ${emp.status === 'Inactive' ? 'selected' : ''}>Inactive</option>
+                    </select>
+                  </td>
+                  <td style="text-align: right;">
+                    <div style="display: flex; gap: 6px; justify-content: flex-end;">
+                      <button class="btn-approve btn-save-inline" style="padding: 4px 8px;"><i class="ti ti-check"></i></button>
+                      <button class="btn-decline btn-cancel-inline" style="padding: 4px 8px;"><i class="ti ti-x"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              `;
+            } else {
+              const badgeClass = emp.status === "Active" ? "badge-active" : "badge-neutral";
+              rowHtml = `
+                <tr data-id="${emp.id}">
+                  <td>
+                    <div class="table-avatar">${initials}</div>
+                  </td>
+                  <td style="font-weight: 600; color: var(--accent);">${emp.id}</td>
+                  <td><div class="table-user-name">${emp.name}</div></td>
+                  <td>${emp.role}</td>
+                  <td><span class="badge badge-neutral">${emp.department}</span></td>
+                  <td>₹${Number(emp.salary).toLocaleString("en-IN")}</td>
+                  <td><span class="badge ${badgeClass}">${emp.status}</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: flex; gap: 6px; justify-content: flex-end;">
+                      <button class="btn-decline btn-edit-inline" style="padding: 4px 8px;" title="Inline Edit"><i class="ti ti-edit"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              `;
+            }
+            $tbody.append(rowHtml);
+          });
+        }
+
+        // Pagination Info text
+        $("#roster-pagination-info").text(`Showing ${totalEntries === 0 ? 0 : startIdx + 1}-${endIdx} of ${totalEntries} entries`);
+
+        // Pagination buttons
+        const $pagButtons = $("#roster-pagination-buttons");
+        $pagButtons.empty();
+
+        if (totalPages > 1) {
+          $pagButtons.append(`<button class="btn-decline pag-btn" data-page="prev" ${currentPage === 1 ? 'disabled' : ''} style="padding: 4px 10px; font-size: 11px;">Prev</button>`);
+          for (let p = 1; p <= totalPages; p++) {
+            const isActive = p === currentPage;
+            const activeStyle = isActive ? 'background-color: var(--accent); color: white; border-color: var(--accent); font-weight: 700;' : '';
+            $pagButtons.append(`<button class="btn-decline pag-btn" data-page="${p}" style="padding: 4px 10px; font-size: 11px; ${activeStyle}">${p}</button>`);
+          }
+          $pagButtons.append(`<button class="btn-decline pag-btn" data-page="next" ${currentPage === totalPages ? 'disabled' : ''} style="padding: 4px 10px; font-size: 11px;">Next</button>`);
+        }
+      }
+
+      // Inline Editing handlers
+      $(document).on("click", ".btn-edit-inline", function() {
+        inlineEditingId = $(this).closest("tr").attr("data-id");
+        loadRoster();
+      });
+
+      $(document).on("click", ".btn-cancel-inline", function() {
+        inlineEditingId = null;
+        loadRoster();
+      });
+
+      $(document).on("click", ".btn-save-inline", function() {
+        const $row = $(this).closest("tr");
+        const id = $row.attr("data-id");
+        const name = $row.find(".inline-edit-name").val().trim();
+        const role = $row.find(".inline-edit-role").val().trim();
+        const department = $row.find(".inline-edit-dept").val();
+        const salary = parseInt($row.find(".inline-edit-salary").val());
+        const status = $row.find(".inline-edit-status").val();
+
+        if (!name || !role || isNaN(salary) || salary < 15000) {
+          ToastSystem.show("Please check fields. Name/role are required and minimum salary is ₹15,000", "error");
+          return;
+        }
+
+        const employees = StorageEngine.getEmployees();
+        const empIdx = employees.findIndex(e => e.id === id);
+        if (empIdx > -1) {
+          employees[empIdx].name = name;
+          employees[empIdx].role = role;
+          employees[empIdx].department = department;
+          employees[empIdx].salary = salary;
+          employees[empIdx].status = status;
+          
+          StorageEngine.saveEmployees(employees);
+          ToastSystem.show(`Updated ${name} successfully!`, "success");
+          inlineEditingId = null;
+          loadRoster();
+          loadKPIs();
+        }
+      });
+
+      // Pagination Click handler
+      $(document).on("click", ".pag-btn", function() {
+        const target = $(this).attr("data-page");
+        if (target === "prev") {
+          currentPage = Math.max(1, currentPage - 1);
+        } else if (target === "next") {
+          const employees = StorageEngine.getEmployees();
+          const totalEntries = employees.length;
+          const totalPages = Math.ceil(totalEntries / limit) || 1;
+          currentPage = Math.min(totalPages, currentPage + 1);
+        } else {
+          currentPage = parseInt(target);
+        }
+        loadRoster();
+      });
+
+      // Search & limits filters
+      $("#roster-search").on("input", function() {
+        currentPage = 1;
+        loadRoster();
+      });
+
+      $("#roster-dept-filter").on("change", function() {
+        currentPage = 1;
+        loadRoster();
+      });
+
+      $("#roster-page-limit").on("change", function() {
+        limit = parseInt($(this).val());
+        currentPage = 1;
+        loadRoster();
+      });
+
+      // Load Widgets (Pending Leaves)
+      function loadPendingLeaves() {
+        const leaves = StorageEngine.getLeaves();
+        const pending = leaves.filter(l => l.status === "Pending");
+        const $list = $("#pending-leaves-list");
+        $list.empty();
+
+        if (pending.length === 0) {
+          $list.append('<div style="text-align: center; color: var(--muted); padding: 12px; font-size: 12px;">No pending leave approvals</div>');
+        } else {
+          pending.forEach(leave => {
+            const initials = leave.employeeName.split(" ").map(n => n[0]).join("").substring(0,2).toUpperCase();
+            $list.append(`
+              <div class="widget-item" style="border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
+                  <div class="table-avatar" style="width: 32px; height: 32px; border-radius: var(--radius-circle);">${initials}</div>
+                  <div class="widget-text">
+                    <div class="widget-title">${leave.employeeName}</div>
+                    <div class="widget-subtext">${leave.type} (${leave.days} days)</div>
+                    <div class="widget-subtext" style="font-size: 10px; margin-top: 2px; color: var(--accent);">${leave.startDate} to ${leave.endDate}</div>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 6px; margin-top: 8px; justify-content: flex-end; width: 100%;">
+                  <button class="btn-approve btn-action-approve" data-id="${leave.id}">Approve</button>
+                  <button class="btn-decline btn-action-decline" data-id="${leave.id}">Decline</button>
+                </div>
+              </div>
+            `);
+          });
+        }
+      }
+
+      // Approve/Decline click triggers
+      $(document).on("click", ".btn-action-approve", function() {
+        const id = $(this).attr("data-id");
+        const leaves = StorageEngine.getLeaves();
+        const leaveIdx = leaves.findIndex(l => l.id === id);
+        if (leaveIdx > -1) {
+          leaves[leaveIdx].status = "Approved";
+          StorageEngine.saveLeaves(leaves);
+          ToastSystem.show(`Approved leave for ${leaves[leaveIdx].employeeName}!`, "success");
+          loadPendingLeaves();
+          loadKPIs();
+        }
+      });
+
+      $(document).on("click", ".btn-action-decline", function() {
+        const id = $(this).attr("data-id");
+        const leaves = StorageEngine.getLeaves();
+        const leaveIdx = leaves.findIndex(l => l.id === id);
+        if (leaveIdx > -1) {
+          leaves[leaveIdx].status = "Rejected";
+          StorageEngine.saveLeaves(leaves);
+          ToastSystem.show(`Declined leave for ${leaves[leaveIdx].employeeName}`, "neutral");
+          loadPendingLeaves();
+          loadKPIs();
+        }
+      });
+
+      // Load Recent Hires (Last 4)
+      function loadRecentHires() {
+        const employees = StorageEngine.getEmployees();
+        // Sort by joinDate descending
+        const sorted = [...employees].sort((a, b) => new Date(b.joinDate) - new Date(a.joinDate)).slice(0, 4);
+        const $list = $("#recent-hires-list");
+        $list.empty();
+
+        sorted.forEach(emp => {
+          const initials = emp.name.split(" ").map(n => n[0]).join("").substring(0,2).toUpperCase();
+          const jDate = new Date(emp.joinDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+          $list.append(`
+            <div class="widget-item">
+              <div class="table-avatar" style="width: 32px; height: 32px; border-radius: var(--radius-circle);">${initials}</div>
+              <div class="widget-text">
+                <div class="widget-title">${emp.name}</div>
+                <div class="widget-subtext">${emp.role} · <span class="badge badge-neutral" style="font-size: 9px; padding: 1px 4px;">${emp.department}</span></div>
+              </div>
+              <div style="font-size: 10px; color: var(--muted); text-align: right;">Joined<br>${jDate}</div>
+            </div>
+          `);
+        });
+      }
+
+      // Load Today's Schedule
+      function loadSchedule() {
+        const $list = $("#schedule-list");
+        $list.empty();
+        
+        // Static and Dynamic Event setup
+        const events = [
+          { time: "09:30 AM", type: "terracotta", name: "Daily Standup Meeting", meta: "Dev & QA Sync" },
+          { time: "11:00 AM", type: "blue", name: "Client UX Walkthrough", meta: "Review with Ananya" },
+          { time: "02:00 PM", type: "green", name: "HR Induction Program", meta: "Welcome Kiran Desai" },
+          { time: "04:30 PM", type: "terracotta", name: "Sprint Planning Session", meta: "Next iteration setup" }
+        ];
+
+        events.forEach(e => {
+          $list.append(`
+            <div class="schedule-item">
+              <div class="schedule-time">${e.time}</div>
+              <div class="schedule-bar bar-${e.type}"></div>
+              <div class="schedule-details">
+                <div class="schedule-name">${e.name}</div>
+                <div class="schedule-meta">${e.meta}</div>
+              </div>
+            </div>
+          `);
+        });
+      }
+
+      // Daily Attendance Marker Logic
+      function loadAttendanceMarker() {
+        const todayStr = new Date().toISOString().split('T')[0];
+        
+        // Display formatted date
+        const formattedDate = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" });
+        $("#attendance-today-date").text(formattedDate);
+
+        const employees = StorageEngine.getEmployees();
+        const activeEmployees = employees.filter(e => e.status === "Active");
+        const attendance = StorageEngine.getAttendance();
+
+        if (!attendance[todayStr]) {
+          attendance[todayStr] = {};
+        }
+
+        // Default all active employees to Present if not defined
+        activeEmployees.forEach(emp => {
+          if (!attendance[todayStr][emp.id]) {
+            attendance[todayStr][emp.id] = "Present";
+          }
+        });
+        StorageEngine.saveAttendance(attendance);
+
+        const $list = $("#attendance-marker-list");
+        $list.empty();
+
+        if (activeEmployees.length === 0) {
+          $list.append('<div style="text-align: center; color: var(--muted); padding: 12px; font-size: 12px;">No active employees to mark</div>');
+          return;
+        }
+
+        activeEmployees.forEach(emp => {
+          const currentStatus = attendance[todayStr][emp.id] || "Present";
+          
+          const activeP = currentStatus === "Present" ? "active-p" : "";
+          const activeA = currentStatus === "Absent" ? "active-a" : "";
+          const activeL = currentStatus === "On Leave" ? "active-l" : "";
+
+          $list.append(`
+            <div class="widget-item" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 2px;">
+              <div class="widget-text">
+                <div class="widget-title" style="font-size: 12.5px; font-weight: 600;">${emp.name}</div>
+                <div class="widget-subtext" style="font-size: 11px; color: var(--muted);">${emp.role}</div>
+              </div>
+              <div class="attendance-toggle-group" data-empid="${emp.id}" style="display: flex; gap: 2px; background-color: var(--neutral-bg); padding: 2px; border-radius: var(--radius-md);">
+                <button class="btn-attendance-toggle btn-p ${activeP}" data-status="Present" style="padding: 4px 8px; font-size: 10px; border: none; background: transparent; border-radius: 4px; font-weight: 700; cursor: pointer;">P</button>
+                <button class="btn-attendance-toggle btn-a ${activeA}" data-status="Absent" style="padding: 4px 8px; font-size: 10px; border: none; background: transparent; border-radius: 4px; font-weight: 700; cursor: pointer;">A</button>
+                <button class="btn-attendance-toggle btn-l ${activeL}" data-status="On Leave" style="padding: 4px 8px; font-size: 10px; border: none; background: transparent; border-radius: 4px; font-weight: 700; cursor: pointer;">L</button>
+              </div>
+            </div>
+          `);
+        });
+      }
+
+      // Live change attendance toggle handler
+      $(document).on("click", ".btn-attendance-toggle", function() {
+        const $btn = $(this);
+        const $group = $btn.closest(".attendance-toggle-group");
+        const empId = $group.attr("data-empid");
+        const newStatus = $btn.attr("data-status");
+        
+        const todayStr = new Date().toISOString().split('T')[0];
+        const attendance = StorageEngine.getAttendance();
+
+        if (!attendance[todayStr]) {
+          attendance[todayStr] = {};
+        }
+
+        attendance[todayStr][empId] = newStatus;
+        StorageEngine.saveAttendance(attendance);
+
+        // Highlight changes
+        $group.find(".btn-attendance-toggle").removeClass("active-p active-a active-l");
+        if (newStatus === "Present") $btn.addClass("active-p");
+        if (newStatus === "Absent") $btn.addClass("active-a");
+        if (newStatus === "On Leave") $btn.addClass("active-l");
+
+        ToastSystem.show(`Marked employee ${empId} as ${newStatus} for today.`, "success");
+        loadKPIs();
+      });
+
+      // Initializer calls
+      loadDeptFilters();
+      loadKPIs();
+      loadRoster();
+      loadPendingLeaves();
+      loadRecentHires();
+      loadSchedule();
+      loadAttendanceMarker();
+    });
+  </script>
+</body>
+</html>

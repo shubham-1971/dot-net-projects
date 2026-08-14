@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>workpeople · Employee Directory</title>
+  <!-- Tabler Icons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loader Overlay -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">workpeople</div>
+  </div>
+
+  <div class="app-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <button id="mobile-hamburger" class="mobile-hamburger" aria-label="Toggle Navigation">
+        <i class="ti ti-menu-2"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <i class="ti ti-layers-difference" style="color: var(--accent); font-size: 19px;"></i>
+        work<span>people</span>
+      </a>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+          <i class="ti ti-moon"></i>
+        </button>
+        <div class="user-profile-menu">
+          <div class="avatar-nav">A</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="main-workspace">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-top">
+          <ul class="sidebar-menu">
+            <li class="sidebar-label">Management</li>
+            <li class="sidebar-item">
+              <a href="index.html">
+                <i class="ti ti-dashboard"></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="sidebar-item active">
+              <a href="employee.html">
+                <i class="ti ti-users"></i>
+                Employees
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="department.html">
+                <i class="ti ti-hierarchy-2"></i>
+                Departments
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="leave.html">
+                <i class="ti ti-calendar-event"></i>
+                Leave Center
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="reports.html">
+                <i class="ti ti-chart-bar"></i>
+                Reports
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-user-block">
+          <div class="avatar-sidebar">HR</div>
+          <div class="user-info">
+            <span class="user-name">Suresh Iyer</span>
+            <span class="user-role">HR Administrator</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="content-viewport">
+        <div class="eyebrow">Staff Database</div>
+        <div class="page-header">
+          <h1 class="page-title">Employee <span>Directory</span></h1>
+        </div>
+
+        <div class="grid-2col">
+          <!-- Left Column: Roster Table -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Employee Roster</h2>
+              <div class="pagination-controls">
+                <select id="roster-page-limit" class="form-control" style="width: auto; padding: 4px 10px; font-size: 11px; height: auto;">
+                  <option value="10" selected>10 Rows</option>
+                  <option value="25">25 Rows</option>
+                  <option value="50">50 Rows</option>
+                </select>
+              </div>
+            </div>
+            <div class="card-body">
+              <!-- Filters bar -->
+              <div class="filter-bar">
+                <div class="filter-search">
+                  <input type="text" id="roster-search" class="form-control" placeholder="Search employees by ID, name, email...">
+                </div>
+                <div class="filter-department">
+                  <select id="roster-dept-filter" class="form-control">
+                    <option value="">All Departments</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Table -->
+              <div class="table-container">
+                <table class="table" id="roster-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 50px;">Avatar</th>
+                      <th>ID</th>
+                      <th>Employee</th>
+                      <th>Contact</th>
+                      <th>Department & Role</th>
+                      <th>Joined Date</th>
+                      <th>Status</th>
+                      <th style="width: 80px; text-align: right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Pagination Info -->
+              <div class="pagination-container">
+                <div class="pagination-info" id="roster-pagination-info">
+                  Showing 1-5 of 5 entries
+                </div>
+                <div class="pagination-controls" id="roster-pagination-buttons">
+                  <!-- JS generated -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Registration Card -->
+          <div class="card" style="height: fit-content;">
+            <div class="card-header">
+              <h2 class="card-title">Register Employee</h2>
+            </div>
+            <div class="card-body">
+              <form id="add-employee-form" novalidate>
+                <!-- Generated ID Field (Read-only) -->
+                <div class="form-group">
+                  <label class="form-label">Employee ID</label>
+                  <input type="text" id="generated-emp-id" class="form-control" readonly style="background-color: var(--neutral-bg); font-weight: 600; color: var(--accent);">
+                </div>
+
+                <!-- Name -->
+                <div class="form-group">
+                  <label class="form-label" for="emp-name">Full Name *</label>
+                  <input type="text" id="emp-name" name="name" class="form-control" placeholder="e.g. Rahul Sharma">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                  <label class="form-label" for="emp-email">Email Address *</label>
+                  <input type="email" id="emp-email" name="email" class="form-control" placeholder="name@workpeople.com">
+                </div>
+
+                <!-- Mobile -->
+                <div class="form-group">
+                  <label class="form-label" for="emp-phone">Phone Number *</label>
+                  <input type="text" id="emp-phone" name="phone" class="form-control" placeholder="10-digit mobile number">
+                </div>
+
+                <!-- Role -->
+                <div class="form-group">
+                  <label class="form-label" for="emp-role">Job Role *</label>
+                  <input type="text" id="emp-role" name="role" class="form-control" placeholder="e.g. Senior Software Engineer">
+                </div>
+
+                <!-- Department -->
+                <div class="form-group">
+                  <label class="form-label" for="emp-dept">Department *</label>
+                  <select id="emp-dept" name="department" class="form-control">
+                    <!-- Loaded dynamically -->
+                  </select>
+                </div>
+
+                <!-- Salary -->
+                <div class="form-group">
+                  <label class="form-label" for="emp-salary">Salary (₹/month) *</label>
+                  <input type="number" id="emp-salary" name="salary" class="form-control" placeholder="Min. ₹15,000">
+                </div>
+
+                <!-- Join Date -->
+                <div class="form-group">
+                  <label class="form-label" for="emp-join-date">Joining Date *</label>
+                  <input type="date" id="emp-join-date" name="joinDate" class="form-control">
+                </div>
+
+                <!-- Avatar Photo Base64 upload -->
+                <div class="form-group">
+                  <label class="form-label">Profile Image</label>
+                  <div style="display: flex; gap: 10px; align-items: center; margin-top: 5px;">
+                    <div id="avatar-preview-box" class="table-avatar" style="width: 50px; height: 50px; border-radius: var(--radius-md); font-size: 16px;">WP</div>
+                    <input type="file" id="emp-avatar-file" class="form-control" accept="image/*" style="padding: 4px;">
+                  </div>
+                </div>
+
+                <div style="margin-top: 18px;">
+                  <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="ti ti-user-plus"></i> Register Employee
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+    <i class="ti ti-arrow-up"></i>
+  </button>
+
+  <!-- jQuery & Core Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/employee.js"></script>
+</body>
+</html>
